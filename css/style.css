@@ -3,7 +3,37 @@ _--------------------------------------_*/
 
 /* layout for 1024 and larger*/
 .lp_container{ width:960px; margin:0 auto;}
-
+.lp_element:hover{ border:dashed 1px #CCC; }
+.lp_focusin{ border:dashed 2px #000; }
+#lp_editor{ width:180px; background: url(../images/strips.png) repeat; position:fixed; left:0; top:25px; border:#666 solid 2px; border-left:0; padding:18px;-webkit-border-top-right-radius: 9px;
+-webkit-border-bottom-right-radius: 9px;
+-moz-border-radius-topright: 9px;
+-moz-border-radius-bottomright: 9px;
+border-top-right-radius: 9px;
+border-bottom-right-radius: 9px;}
+.lp_editor_row{ font-size:13px; margin-bottom:9px;}
+.lp_editor_row .lp_icon{ width:29px; height:29px; display:block; float:left; cursor:pointer; margin-right:7px;}
+.lp_editor_row .bold{ background:url(../images/bold.png) no-repeat;}
+.lp_editor_row .italic{ background:url(../images/italic.png) no-repeat;}
+.lp_editor_row .underline{ background:url(../images/underline.png) no-repeat;}
+.lp_editor_row .alineLeft{ background:url(../images/aline_left.png) no-repeat;}
+.lp_editor_row .alineCenter{ background:url(../images/aline_center.png) no-repeat;}
+.lp_editor_row .alineRight{ background:url(../images/aline_right.png) no-repeat;}
+#colorSelector {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background: url(../images/select.png);
+}
+#colorSelector div {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 30px;
+	height: 30px;
+	background: url(../images/select.png) center;
+}
+#closePanel{ position:relative; float:right; top:-37px; right:-37px; width:42px; height:42px; display:block; background:url(../images/close.png) no-repeat}
 /* overwrites - layout for max-1024 min-480*/
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
 .lp_container{ width:82%; margin:0 auto;}
