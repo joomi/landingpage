@@ -98,14 +98,19 @@ $('#colorSelector').ColorPicker({
 $('#upload_img').uploadify({
     'swf'      : 'images/uploadify.swf',
 	'uploader' : 'includes/lib/uploadify.php',
-	'width'    : '<?php echo $_GET['width']; ?>',
+	'fileObjName' : 'image_field',
+	'width'    : '130',
 	'preventCaching' : false,
 	'buttonText' : 'Select an image...',
 	'fileSizeLimit' : '2MB',
 	'fileTypeDesc' : 'Image Files',
 	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 	'onUploadComplete' : function(file) {
-			alert('The file ' + file.name + ' finished processing.');
-       	}
+		alert('The file ' + file.name + ' finished processing.');
+    },
+	'onUploadSuccess' : function(file, data, response) {
+		$(this).attr('src', data);
+	}
+	
 });
 </script>
