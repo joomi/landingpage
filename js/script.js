@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 		edit('on');
 		$(this).addClass('lp_focusin').attr('contenteditable', 'true');
 		$.ajax({
-			url:'http://127.0.0.1/landingpage/landingpage.git/includes/lp_editor_panels/text.tpl',
+			url:'includes/lp_editor_panels/text.tpl',
 			success: function(data){
 				$('#lp_controls').append(data);
 			}
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 		if(edit('status') == 'on') return false;
 		edit('on');
 		$.ajax({
-			url:'http://127.0.0.1/landingpage/landingpage.git/includes/lp_editor_panels/social.tpl',
+			url:'includes/lp_editor_panels/social.tpl',
 			success: function(data){
 				$('#lp_controls').append(data);
 				socialStatus();
@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
 		var marginRight = $(this).css('margin-right');
 		var marginBottom = $(this).css('margin-bottom');		
 		$.ajax({
-			url:'http://127.0.0.1/landingpage/landingpage.git/includes/lp_editor_panels/image.tpl.php',
+			url:'includes/lp_editor_panels/image.tpl.php',
 			data:'width='+width+'&height='+height+'&title='+title+'&alt='+alt+'&borderWidth='+borderWidth+'&borderStyle='+borderStyle+'&borderColor='+borderColor+'&float='+float+'&marginTop='+marginTop+'&marginLeft='+marginLeft+'&marginRight='+marginRight+'&marginBottom='+marginBottom,
 			success: function(data){
 				$('#lp_controls').append(data);
