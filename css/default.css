@@ -9,7 +9,7 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_headerImg{ width:100%; max-height:90px;}
 .def_leftCol{ float:left; width:27%; margin:12px 6% 12px 0}
 .def_midCol{ float:left; width:27%; margin:12px 0}
-.def_rightCol{ float:right; width:27%; margin:12px 0 12px 6%}
+.def_rightCol{ float:left; width:27%; margin:12px 0 12px 6%}
 .def_contentCol{ font-size:14px; color:#333;}
 .def_contentCol img{ width:100%; max-height:110px; margin:12px 0}
 .def_contentCol p{ margin:12px 0}
@@ -26,11 +26,16 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_footerNav{ margin:0 auto; text-align:center; padding:0 0;}
 .def_footerNav li{text-align:center; display:inline-block; padding:0 5px; margin:0 0;}
 .def_footerNav li a{ display:block; line-height:20px; color:#EEA34A;}
-.dev_footerSocialIcon{ float:right; margin:0 0 0 9px; width:33px; height:32px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
-.def_facebook{ background-position:0 0;}
-.def_youtube{ background-position:-34px 0;}
-.def_bloger{ background-position:-67px 0;}
-.def_twitter{ background-position:-67px 0;}
+.lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:32px; height:32px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
+.def_Facebook{ background-position:0 0;}
+.def_Youtube{ background-position:-34px 0;}
+.def_Blogger{ background-position:-67px 0;}
+.def_Twitter{ background-position:-34px -32px;}
+.def_Yahoo{ background-position:-99px -32px;}
+.def_Google{ background-position:-34px -64px;}
+.def_Linkedin{ background-position:-67px -64px;}
+.def_Flicker{ background-position:-67px -32px;}
+.def_Myspace{ background-position:-99px 0; }
 
 
 

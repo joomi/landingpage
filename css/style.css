@@ -4,26 +4,41 @@ _--------------------------------------_*/
 /* layout for 1024 and larger*/
 .lp_container{ width:960px; margin:0 auto;}
 .lp_element:hover{ border:dashed 1px #CCC; }
+.lp_img_element:hover{ opacity:0.7}
+.editing .lp_img_element:hover{ opacity:1 !important; }
+.editing .lp_element:hover{ border:0px !important; }
 .lp_focusin{ border:dashed 2px #000; }
-#lp_editor{ width:180px; background: url(../images/strips.png) repeat; position:fixed; left:0; top:25px; border:#666 solid 2px; border-left:0; padding:18px;-webkit-border-top-right-radius: 9px;
+#lp_editor{ width:180px; background: url(../images/strips.png) repeat; position:fixed; left:0; top:25px; border:#666 solid 2px; border-left:0; padding:18px 0;-webkit-border-top-right-radius: 9px;
 -webkit-border-bottom-right-radius: 9px;
 -moz-border-radius-topright: 9px;
 -moz-border-radius-bottomright: 9px;
 border-top-right-radius: 9px;
 border-bottom-right-radius: 9px;}
-.lp_editor_row{ font-size:13px; margin-bottom:9px;}
-.lp_editor_row .lp_icon{ width:29px; height:29px; display:block; float:left; cursor:pointer; margin-right:7px;}
-.lp_editor_row .bold{ background:url(../images/bold.png) no-repeat;}
+#lp_editor h6{ background: #CCC; border-bottom:#666 solid 1px; margin: -18px 0px 13px; text-shadow: 1px 1px #999; padding: 12px; color: #EEA34A;}
+#lp_editor .lp_ctrl_title{ margin: -13px -11px 11px; text-shadow: 1px 1px #999; padding: 12px; color: #EEA34A; display: block; border-bottom: 1px solid #999;}
+#lp_inner_editor_wrap{ width: 180px; height:200px; overflow-y:auto; padding: 0 10px;}
+.lp_editor_row{ font-size:13px; margin-bottom:13px;}
+.lp_editor_row .lp_icon{ width:29px; height:29px; display:block; float:left; cursor:pointer; margin-right:14px;}
+.lp_editor_row .bold{ background:url(../images/bold.png) no-repeat; }
+.lp_editor_row .normal{ background:url(../images/bold.png) no-repeat; opacity:0.7}
 .lp_editor_row .italic{ background:url(../images/italic.png) no-repeat;}
+.lp_editor_row .noStyle{ background:url(../images/italic.png) no-repeat; opacity:0.7}
 .lp_editor_row .underline{ background:url(../images/underline.png) no-repeat;}
+.lp_editor_row .noDecor{ background:url(../images/underline.png) no-repeat; opacity:0.7}
 .lp_editor_row .alineLeft{ background:url(../images/aline_left.png) no-repeat;}
 .lp_editor_row .alineCenter{ background:url(../images/aline_center.png) no-repeat;}
 .lp_editor_row .alineRight{ background:url(../images/aline_right.png) no-repeat;}
+.lp_editor_row label{ font-weight:bold; display:block; line-height:16px;}
+.lp_editor_row select{ width:95%}
+#closeEditor{width:99%; cursor:pointer; margin:12px 0; border:solid 1px #ccc; padding:10px 5%; -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+.lp_panel_wrapper{ width:170px; overflow:hidden;}
+#colorPicker{ float:left; width:80px; margin-left:6px; padding:6px 3px;}
 #colorSelector {
 	position: relative;
 	width: 36px;
 	height: 36px;
 	background: url(../images/select.png);
+	float:left;
 }
 #colorSelector div {
 	position: absolute;
@@ -33,7 +48,104 @@ border-bottom-right-radius: 9px;}
 	height: 30px;
 	background: url(../images/select.png) center;
 }
-#closePanel{ position:relative; float:right; top:-37px; right:-37px; width:42px; height:42px; display:block; background:url(../images/close.png) no-repeat}
+#closePanel{ position:relative; float:right; top:-37px; right:-22px; width:42px; height:42px; display:block; background:url(../images/close.png) no-repeat}
+#img_margin_top{ margin:5px 59px; text-align:center; width:35px}
+#img_margin_left{ float:left; text-align:center; width:35px}
+#img_margin_right{ margin-right:8px; float:right;  text-align:center; width:35px}
+#img_margin_bottom{ margin:5px 59px; clear:both; text-align:center; width:35px}
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+
+.uploadify {
+	position: relative;
+	margin-bottom: 1em;
+}
+.uploadify-button {
+	background-color: #505050;
+	background-image: linear-gradient(bottom, #505050 0%, #707070 100%);
+	background-image: -o-linear-gradient(bottom, #505050 0%, #707070 100%);
+	background-image: -moz-linear-gradient(bottom, #505050 0%, #707070 100%);
+	background-image: -webkit-linear-gradient(bottom, #505050 0%, #707070 100%);
+	background-image: -ms-linear-gradient(bottom, #505050 0%, #707070 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #505050),
+		color-stop(1, #707070)
+	);
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	border: 2px solid #808080;
+	color: #FFF;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	width: 100%;
+}
+.uploadify:hover .uploadify-button {
+	background-color: #606060;
+	background-image: linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -o-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -moz-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -ms-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #606060),
+		color-stop(1, #808080)
+	);
+	background-position: center bottom;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+.uploadify-queue {
+	margin-bottom: 1em;
+}
+.uploadify-queue-item {
+	background-color: #F5F5F5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 350px;
+	padding: 10px;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('../images/uploadify-cancel.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+
 /* overwrites - layout for max-1024 min-480*/
 @media only screen and (max-width: 1024px) and (min-width: 481px) {
 .lp_container{ width:82%; margin:0 auto;}
