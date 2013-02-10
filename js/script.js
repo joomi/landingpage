@@ -39,6 +39,7 @@ jQuery(document).ready(function($) {
 		edit('on');
 		var width = $(this).width();
 		var height = $(this).height();
+		var id = $(this).attr('id');
 		var title = $(this).attr('title');
 		var alt = $(this).attr('alt');
 		var borderWidth = $(this).css('border-width');
@@ -51,7 +52,7 @@ jQuery(document).ready(function($) {
 		var marginBottom = $(this).css('margin-bottom');		
 		$.ajax({
 			url:'includes/lp_editor_panels/image.tpl.php',
-			data:'width='+width+'&height='+height+'&title='+title+'&alt='+alt+'&borderWidth='+borderWidth+'&borderStyle='+borderStyle+'&borderColor='+borderColor+'&float='+float+'&marginTop='+marginTop+'&marginLeft='+marginLeft+'&marginRight='+marginRight+'&marginBottom='+marginBottom,
+			data:'width='+width+'&height='+height+'&title='+title+'&alt='+alt+'&borderWidth='+borderWidth+'&borderStyle='+borderStyle+'&borderColor='+borderColor+'&float='+float+'&marginTop='+marginTop+'&marginLeft='+marginLeft+'&marginRight='+marginRight+'&marginBottom='+marginBottom+'&id='+id,
 			success: function(data){
 				$('#lp_controls').append(data);
 			}

@@ -21,7 +21,7 @@
 <body>
     <div role="canvas" class="lp_canvas">
         <div class="lp_container" role="heading">
-            <img src="images/placeholder.jpg" style="border-width:2px; border-style:dashed; border-color:#666" class="lp_img def_logo" data-role="lp_element" data-width="120" data-height="60" title="company name" alt="company name" />
+            <img src="images/placeholder.jpg" style="border-width:2px; border-style:dashed; border-color:#666" class="lp_img def_logo" data-role="lp_element" id="lp_logo" data-width="120" data-height="60" title="company name" alt="company name" />
             <h1 data-role="text">Campaign title</h1>
             <div class="def_topMenu" data-role="lp_element">
                 <a href="#" data-role="link">LINK</a> | <a href="#" data-role="link">LINK</a> | <a href="#" data-role="link">LINK</a> | <a href="#" data-role="link">LINK</a>
@@ -29,18 +29,18 @@
             <div class="clear"></div>
         </div>
         <div class="lp_container" role="heading">
-            <img src="images/placeholder.jpg" class="lp_img def_headerImg" data-role="lp_element" data-width="100%" data-height="90" title="company name" alt="company name" />
+            <img id="lp_headerimg" src="images/placeholder.jpg" class="lp_img def_headerImg" data-role="lp_element" data-width="100%" data-height="90" title="company name" alt="company name" />
         </div>
         <div role="main" class="lp_container def_main lp_main">
             <div data-role="lp_element" class="def_leftCol def_contentCol">
             	<h3 data-role="text">Title Header</h3>
                 <p data-role="text">Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
-                <img src="images/placeholder.jpg" class="lp_img def_contentImg" data-role="lp_element" data-width="120" data-height="120" title="" alt="" />
+                <img src="images/placeholder.jpg" id="lp_content_img_1" class="lp_img def_contentImg" data-role="lp_element" data-width="120" data-height="120" title="" alt="" />
             </div>
             <div data-role="lp_element" class="def_midCol def_contentCol">
             	<h3 data-role="text">Title Header</h3>
                 <p data-role="text">Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
-                <img src="images/placeholder.jpg" class="lp_img def_contentImg" data-role="lp_element" data-width="120" data-height="120" title="" alt="" />                
+                <img src="images/placeholder.jpg" id="lp_content_img_1" class="lp_img def_contentImg" data-role="lp_element" data-width="120" data-height="120" title="" alt="" />                
             </div>
             <div data-role="lp_element" class="def_rightCol def_formHolder def_contentCol">
                 <h3 data-role="text">Form Header</h3>

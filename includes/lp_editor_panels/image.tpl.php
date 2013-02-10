@@ -29,6 +29,9 @@
         <input type="text" id="img_margin_bottom" placeholder="bottom" value="<?php echo $_GET['marginBottom']; ?>" data-style="margin-bottom" />
     </div>
     <div class="lp_editor_row">
+		<label for="img_clear"><input type="checkbox" id="img_clear" value="1" /> Add clear fix </label>
+    </div>    
+    <div class="lp_editor_row">
         <label for="img_border">Image border</label>
         <select id="img_border_width" data-style="border-width">
         	<option value="0">Select border width</option>
@@ -56,14 +59,16 @@
         <div id="colorSelector"><div style="background-color: <?php echo $_GET['borderColor']; ?>;"></div></div>
         <input type="text" id="colorPicker" value="<?php echo $_GET['borderColor']; ?>" />
         <div class="clear"></div>        
-    </div>    
+    </div> 
+    <div class="lp_editor_row">
+		<label for="img_width">Link image</label>
+        <input type="url" id="img_link" value="<?php echo $_GET['link']; ?>" />
+    </div>
     <div class="lp_editor_row">
         <input type="button" id="closeEditor" onclick="edit('off');" value="I'm done here" />
     </div>
 </div>
 <script>
-var width = <?php echo $_GET['width']; ?>;
-var height = <?php echo $_GET['height']; ?>;
 $('#colorPicker').ColorPicker({
 	onSubmit: function(hsb, hex, rgb, el) {
 		$(el).val(hex);
@@ -72,8 +77,13 @@ $('#colorPicker').ColorPicker({
 	onBeforeShow: function () {
 		$(this).ColorPickerSetColor(this.value);
 	},
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},	
 	onChange: function (hsb, hex, rgb) {
 		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
+		$('#<?php echo $_GET['id']; ?>').css('borderColor', '#' + hex);
 		$('#colorSelector div').css('backgroundColor', '#' + hex);		
 	}
 })
@@ -85,12 +95,8 @@ $('#colorSelector').ColorPicker({
 		$(colpkr).fadeIn(500);
 		return false;
 	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},	
 	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
+		$('#<?php echo $_GET['id']; ?>').css('borderColor', '#' + hex);
 		$('#colorSelector div').css('backgroundColor', '#' + hex);
 		$('#colorPicker').val(hex);
 	}
@@ -100,17 +106,41 @@ $('#upload_img').uploadify({
 	'uploader' : 'includes/lib/uploadify.php',
 	'fileObjName' : 'image_field',
 	'width'    : '130',
+    'formData' : {'width' : '<?php echo $_GET['width']; ?>', 'reflection' : 1},	
 	'preventCaching' : false,
 	'buttonText' : 'Select an image...',
 	'fileSizeLimit' : '2MB',
 	'fileTypeDesc' : 'Image Files',
 	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-	'onUploadComplete' : function(file) {
-		alert('The file ' + file.name + ' finished processing.');
-    },
 	'onUploadSuccess' : function(file, data, response) {
-		$(this).attr('src', data);
+		$('#<?php echo $_GET['id']; ?>').attr('src', data);
 	}
 	
 });
+$('#img_width').focusout(function() {
+	$('#<?php echo $_GET['id']; ?>').attr('width', $(this).val()).css('width',$(this).val());
+});
+$('#img_height').focusout(function() {
+	$('#<?php echo $_GET['id']; ?>').attr('height', $(this).val()).css('height',$(this).val());
+});
+$('#img_title').focusout(function() {
+	$('#<?php echo $_GET['id']; ?>').attr('title', $(this).val());
+});
+$('#img_alt').focusout(function() {
+	$('#<?php echo $_GET['id']; ?>').attr('alt', $(this).val());
+});
+$('select').change(function() {
+	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val());
+});
+$('#img_margin_top,#img_margin_left,#img_margin_right,#img_margin_bottom').focusout(function() {
+	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val());
+});
+$('#img_clear').click(function() {
+    if (this.checked) {
+		$('#<?php echo $_GET['id']; ?>').after('<br class="lp_clear" />');
+    } else {
+		$('#<?php echo $_GET['id']; ?>').next('.lp_clear').remove();
+	}
+});
+
 </script>
