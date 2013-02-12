@@ -27,6 +27,7 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_footerNav li{text-align:center; display:inline-block; padding:0 5px; margin:0 0;}
 .def_footerNav li a{ display:block; line-height:20px; color:#EEA34A;}
 .lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:32px; height:32px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
+
 .def_Facebook{ background-position:0 0;}
 .def_Youtube{ background-position:-34px 0;}
 .def_Blogger{ background-position:-67px 0;}

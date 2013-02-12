@@ -1,5 +1,5 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Add a new image</span>
+    <span class="lp_ctrl_title">Replace the image</span>
 	<input type="file" id="upload_img" />
     <span class="lp_ctrl_title">Image Editor</span>
     <div class="lp_editor_row">
@@ -62,7 +62,7 @@
     </div> 
     <div class="lp_editor_row">
 		<label for="img_width">Link image</label>
-        <input type="url" id="img_link" value="<?php echo $_GET['link']; ?>" />
+        <input type="url" id="img_link" value="<?php echo ($_GET['link'] != 'undefined')?$_GET['link']:''; ?>" />
     </div>
     <div class="lp_editor_row">
         <input type="button" id="closeEditor" onclick="edit('off');" value="I'm done here" />
@@ -141,6 +141,13 @@ $('#img_clear').click(function() {
     } else {
 		$('#<?php echo $_GET['id']; ?>').next('.lp_clear').remove();
 	}
+});
+$('#img_link').focusout(function() {
+	var urlReg = /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
+	if(urlReg.test($(this).val()))	
+	<?php echo ($_GET['link'] != 'undefined')?"$('#".$_GET['id']."').parent().attr('href', $(this).val());":"$('#".$_GET['id']."').wrap('<a href=\"'+$(this).val()+'\" />');"; ?>
+	else
+	alert('Please enter a valid url');
 });
 
 </script>
