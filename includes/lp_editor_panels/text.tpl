@@ -1,5 +1,4 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Text Editor</span>
     <div class="lp_editor_row">
         <a href="#" class="alineLeft lp_icon"></a>
         <a href="#" class="alineCenter lp_icon"></a>
@@ -64,6 +63,8 @@
     </div>
 </div>
 <script>
+$('#lp_editor h6').text('Editor pannel - Text');
+
 $('#colorPicker').ColorPicker({
 	onSubmit: function(hsb, hex, rgb, el) {
 		$(el).val(hex);

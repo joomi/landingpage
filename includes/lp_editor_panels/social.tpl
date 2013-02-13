@@ -1,5 +1,4 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Social links</span>
     <div class="lp_editor_row lp_checkbox_list">
 		<label for="Facebook"><input type="checkbox" class="check_social" id="Facebook" />Facebook</label>
         <input type="url" placeholder="Facebook url" id="Facebook_url" style="display:none" />
@@ -30,6 +29,7 @@
     </div>
 </div>
 <script>
+$('#lp_editor h6').text('Editor pannel - Social links');
 
 $('.check_social').click(function() {
 	var name = $(this).attr('id');

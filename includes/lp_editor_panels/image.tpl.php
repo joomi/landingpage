@@ -69,6 +69,8 @@
     </div>
 </div>
 <script>
+$('#lp_editor h6').text('Editor pannel - Image');
+
 $('#colorPicker').ColorPicker({
 	onSubmit: function(hsb, hex, rgb, el) {
 		$(el).val(hex);

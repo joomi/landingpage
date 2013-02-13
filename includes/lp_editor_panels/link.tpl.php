@@ -1,5 +1,4 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Link Editor</span>
     <div class="lp_editor_row">
 		<label for="img_width">Link url</label>
         <input type="url" id="url_link" value="<?php echo $_GET['link']; ?>" />
@@ -62,6 +61,8 @@
     </div>
 </div>
 <script>
+$('#lp_editor h6').text('Editor pannel - Link');
+
 $('#colorPicker').ColorPicker({
 	onSubmit: function(hsb, hex, rgb, el) {
 		$(el).val(hex);

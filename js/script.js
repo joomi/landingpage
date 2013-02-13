@@ -10,6 +10,13 @@ jQuery(document).ready(function($) {
 		$(this).addClass('lp_element');
 	});
 	
+	$("*[data-role='lp_element']").mouseenter(function(e) {
+		var title = $(this).attr('data-name');
+        $(this).prepend('<a class="lp_remove_block" onClick="removeBlock(this);" title="Remove '+title+'" alt="Remove '+title+'"></a>');
+    }).mouseleave(function(e) {
+        $('.lp_remove_block',this).remove();
+    });
+	
 	var bodyheight = $(window).height();
     $("#lp_inner_editor_wrap").height(parseInt(bodyheight*0.7)+'px');
 	
@@ -82,16 +89,19 @@ jQuery(document).ready(function($) {
 		if(edit('status') == 'on') return false;
 		edit('on');
 		var row = '';
+		var value = '';
 		$('.lp_form_row').each(function(index, element) {
-            var label     = $(element).children('label').text();
-            var input     = $(element).children('input');
+            var label     = $('label', this).text();
+            var input     = $('input', this);
 			var id 		  = input.attr('id');
 			var type	  = input.attr('type');
-			var name	  = input.attr('name');
-			var class     = input.attr('class');
-			var row = row + '';
+		//	var name	  = input.attr('name');
+			var value	  = (type == 'submit')?input.attr('value'):'';
+		//	var classx    = input.attr('class');
+			var remove    = (type != 'submit')?'<a class="lp_remove_field" title="Remove this field" alt="Remove this field" rel="'+id+'"></a>':'';
+			row = row + '<div class="lp_editor_row"><label for="label_'+id+'">Field label '+remove+'</label><input class="lp_form_label_update" type="text" data-id="'+id+'" data-type="'+type+'" value="'+label+value+'" /><label class="lesser">Input type is <i>'+type+'</i></label></div>';
         });
-		base = base + $.base64.encode(label);
+		var base = $.base64.encode(encodeURI(row));
 		
 		$.ajax({
 			url:'includes/lp_editor_panels/form.tpl.php?base='+base,
@@ -105,6 +115,10 @@ jQuery(document).ready(function($) {
 		edit('off');
 	});
 	
+    $("iframe").click(function(){
+		alert('');
+	});
+	
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) { edit('off'); }   // esc
 	});	
@@ -114,15 +128,27 @@ jQuery(document).ready(function($) {
 			$('.def_leftCol').removeClass('def_leftCol');
 			$('.def_rightCol').removeClass('def_rightCol');
 			$('.def_midCol').removeClass('def_midCol');
-			$('.lp_main > div:first-child').addClass('def_leftCol');
-			$('.lp_main > div:eq(2)').addClass('def_rightCol');
-			$('.lp_main > div:eq(1)').addClass('def_midCol');
+			$('.lp_main > div:first-child:not(.clear)').addClass('def_leftCol');
+			$('.lp_main > div:eq(1):not(.clear)').addClass('def_midCol');
+			$('.lp_main > div:eq(2):not(.clear)').addClass('def_rightCol');
 		}
 	});
 	$('#lp_contact-form,.lp_social_container').sortable({
     //	placeholder: "ui-state-highlight"
     });
 });
+
+function removeBlock($this) {
+	if(edit('status') == 'off'){
+		var doit = confirm('Are you sure you would like to remove this block');
+		if(doit)
+		$($this).parent().remove();
+		else
+		return false;
+	} else {
+		alert('Please close the edit penel first');	
+	}
+};
 
 function edit(state){
 	switch(state){
