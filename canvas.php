@@ -11,15 +11,19 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/default.css">
 	<link rel="stylesheet" href="sunny/jquery-ui-1.10.0.custom.css">
-	<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/colorpicker.js"></script>    
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>    
+	<script type="text/javascript" src="js/bootstrap-colorpicker.js"></script>    
 	<script type="text/javascript" src="js/jquery.uploadify.min.js"></script>    
     <script src="js/script.js"></script>
 </head>
 <body>
     <div role="canvas" class="lp_canvas">
+    <div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
         <div class="lp_container" role="heading">
             <a href="http://sdf"><img src="images/placeholder.jpg" style="border-width:2px; border-style:dashed; border-color:#666" class="lp_img def_logo" data-role="lp_element" id="lp_logo" data-width="120" data-height="60" title="company name" alt="company name" /></a>
             <h1 data-role="text">Campaign title</h1>
@@ -85,13 +89,16 @@
             <div class="clear"></div>
         </div>
     </div>
-	<div id="lp_editor" data-state="off" style="width:0; visibility:hidden;">
-    	<a href="#" id="closePanel"></a>
-    	<h6>Editor Panel</h6>
-        <div id="lp_inner_editor_wrap">
-        	<div id="lp_controls"></div>
+    <div id="myModal" class="modal hide fade" role="dialog" data-state="off" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" onClick="edit('off');" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Editor Panel</h3>
         </div>
-    </div>
+        <div class="modal-body" id="lp_inner_editor_wrap"><div id="lp_controls"></div></div>
+        <div class="modal-footer">
+            <button class="btn" onClick="edit('off');" aria-hidden="true">Close</button>
+        </div>
+    </div>    
 </body>
 </html>
 

@@ -2,6 +2,8 @@ jQuery(document).ready(function($) {
 	$('a').click(function(event){event.preventDefault()});
 	$('.lp_canvas input[type=submit]').click(function(event){event.preventDefault()});
 	$.base64.is_unicode = true;
+	$( "#myModal" ).draggable({ handle:'.modal-header'});
+	
 	$().enableUndo({ redoCtrlChar : 'y', redoShiftReq : false });
     $("*[data-role='lp_element']").each(function(){
 		if($(this).is("img"))
@@ -18,7 +20,7 @@ jQuery(document).ready(function($) {
     });
 	
 	var bodyheight = $(window).height();
-    $("#lp_inner_editor_wrap").height(parseInt(bodyheight*0.7)+'px');
+    $("#lp_inner_editor_wrap").height((parseInt(bodyheight*0.7) - 100)+'px');
 	
     $("*[data-role='text']").dblclick(function(){
 		if(edit('status') == 'on') return false;
@@ -153,19 +155,18 @@ function removeBlock($this) {
 function edit(state){
 	switch(state){
 		case 'status':
-			return $("#lp_editor").attr('data-state');
+			return $("#myModal").attr('data-state');
 			break;	
 		case 'off':
-			$("#lp_editor").attr('data-state', 'off').animate({width:0},500, 'linear', function() {
-				$(this).css({visibility:'hidden'});
-				$('#lp_controls').html('');
-				$('.lp_focusin').removeClass('lp_focusin').attr('contenteditable', 'false');
-				$(".lp_canvas").toggleClass( "editing" );
-				$( ".lp_main" ).sortable( "enable" );
-			});			
+			$('#myModal').attr('data-state', 'off').modal('hide');
+			$('#lp_controls').html('');
+			$('.colorpicker').remove();
+			$('.lp_focusin').removeClass('lp_focusin').attr('contenteditable', 'false');
+			$(".lp_canvas").toggleClass( "editing" );
+			$( ".lp_main" ).sortable( "enable" );
 			break;	
 		case 'on':
-			$("#lp_editor").attr('data-state', 'on').animate({width:200},500).css({visibility:'visible'});
+			$('#myModal').attr('data-state', 'on').modal({'backdrop':false});
 			$(".lp_canvas").toggleClass( "editing" );
 			$(".lp_main").sortable( "disable" );
 			break;	
@@ -174,7 +175,7 @@ function edit(state){
 
 $(window).resize(function() {
     var bodyheight = $(window).height();
-    $("#lp_inner_editor_wrap").height(parseInt(bodyheight*0.7)+'px');
+    $("#lp_inner_editor_wrap").height((parseInt(bodyheight*0.7) - 100)+'px');
 });
 
 //get selected text
@@ -202,76 +203,6 @@ function socialStatus(){
 		$('#'+name).attr('checked', true).parent().next().show().val(url); 
     });	
 }
-
-/*
- * 
- * jQuery.undoable()
- *
- * Copyright (c) 2009 Jared Mellentine - jared(at)mellentine(dot)com | http://design.mellentine.com
- * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
- * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
- * Date: 3/9/2009
- * 
- * Full documentation coming soon (or you can read the 55 lines below)
- * 
- */
-
-jQuery.fn.undoable = function(redo) {
-	var undo = (typeof arguments[1] == 'function') ? arguments[1] : redo;
-	redo();
-	var uf = jQuery('body').data('undoFunctions');		
-	if (typeof uf == 'object') uf.push([redo,undo]); else uf = [[redo,undo]];
-	if (jQuery('body').data('undoEnabled') !== true) $().enableUndo();
-	jQuery('body').data('undoFunctions', uf);
-	jQuery('body').data('redoFunctions', []); // reset the redo queue
-};
-
-jQuery.fn.enableUndo = function(params){
-	var defaults = {
-		undoCtrlChar : 'z',
-		redoCtrlChar : 'z',
-		redoShiftReq : true
-	};
-	var settings = jQuery.extend(defaults, params);
-	var undoChar = settings.undoCtrlChar.toUpperCase().charCodeAt();
-	var redoChar = settings.redoCtrlChar.toUpperCase().charCodeAt();
-	
-	jQuery(document).keydown(function(e){
-		// UNDO
-		if (e.ctrlKey && !e.shiftKey && e.which == undoChar) {
-			var uf = jQuery('body').data('undoFunctions');
-			if (typeof uf == 'object') {
-				var lf = uf.pop();
-				jQuery('body').data('undoFunctions', uf);
-
-				if (lf) {
-					var rf = jQuery('body').data('redoFunctions');
-					if (rf) rf.push(lf); else rf = [lf];
-					jQuery('body').data('redoFunctions', rf);
-
-					lf[1](); // undo is index 1
-				}
-			}
-		}
-		// REDO
-		if (e.ctrlKey && (e.shiftKey || !settings.redoShiftReq) && e.which == redoChar) {
-			var rf = jQuery('body').data('redoFunctions');
-			if (typeof rf == 'object') {
-				var lf = rf.pop();
-				jQuery('body').data('redoFunctions', rf);
-
-				if (lf) {
-					var uf = jQuery('body').data('undoFunctions');
-					if (uf) uf.push(lf); else uf = [lf];
-					jQuery('body').data('undoFunctions', uf);
-
-					lf[0](); // redo is index 0
-				}
-			}
-		}
-	});
-	jQuery('body').data('undoEnabled', true);
-};
 
 /*
 @desc

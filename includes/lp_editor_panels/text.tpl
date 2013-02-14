@@ -50,8 +50,10 @@
     </div>
     <div class="lp_editor_row">
         <label for="colorPicker">Text color</label>
-        <div id="colorSelector"><div style="background-color: rgb(59, 59, 143);"></div></div>
-        <input type="text" id="colorPicker" />
+        <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="hex" id="cp3">
+            <input type="text" class="span2" value="" readonly="">
+            <span class="add-on"><i></i></span>
+        </div>
         <div class="clear"></div>
     </div>
     <div class="lp_editor_row">
@@ -65,39 +67,11 @@
 <script>
 $('#lp_editor h6').text('Editor pannel - Text');
 
-$('#colorPicker').ColorPicker({
-	onSubmit: function(hsb, hex, rgb, el) {
-		$(el).val(hex);
-		$(el).ColorPickerHide();
-	},
-	onBeforeShow: function () {
-		$(this).ColorPickerSetColor(this.value);
-	},
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);		
-	}
-})
-.bind('keyup', function(){
-	$(this).ColorPickerSetColor(this.value);
+$('#cp3').colorpicker().on('changeColor', function(ev){
+	$('.lp_focusin').css('color', ev.color.toHex());
 });
-$('#colorSelector').ColorPicker({
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},	
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);
-		$('#colorPicker').val(hex);
-	}
-});
-
-$('.bold').click(function() {
+$('.bold').click(function(e) {
+	e.preventDefault();
    $(this).hide();
    $('.normal').show(); 
 	var st = Kolich.Selector.getSelected();
@@ -108,7 +82,8 @@ $('.bold').click(function() {
 	   $('.lp_focusin').css('font-weight', 'bold');	
 	}
 });
-$('.normal').click(function() {
+$('.normal').click(function(e) {
+	e.preventDefault();	
 	var st = Kolich.Selector.getSelected();
 	if(st!=''){
 		var newString = $('.lp_focusin').html().replace(st, '<span style="font-weight:normal">'+st+'</span>');
@@ -119,33 +94,40 @@ $('.normal').click(function() {
    $(this).hide();
    $('.bold').show(); 
 });
-$('.italic').click(function() {
+$('.italic').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('font-style', 'italic'); 
    $(this).hide();
    $('.noStyle').show(); 
 });
-$('.noStyle').click(function() {
+$('.noStyle').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('font-style', 'normal'); 
    $(this).hide();
    $('.italic').show(); 
 });
-$('.underline').click(function() {
+$('.underline').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('text-decoration', 'underline'); 
    $(this).hide();
    $('.noDecor').show(); 
 });
-$('.noDecor').click(function() {
+$('.noDecor').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('text-decoration', 'none'); 
    $(this).hide();
    $('.underline').show(); 
 });
-$('.alineLeft').click(function() {
+$('.alineLeft').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('text-align', 'left'); 
 });
-$('.alineCenter').click(function() {
+$('.alineCenter').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('text-align', 'center'); 
 });
-$('.alineRight').click(function() {
+$('.alineRight').click(function(e) {
+	e.preventDefault();
    $('.lp_focusin').css('text-align', 'right'); 
 });
 $('#font_family').change(function(e) {
@@ -155,6 +137,7 @@ $('#font_size').change(function(e) {
     $('.lp_focusin').css('font-size', $(this).val()); 
 });
 $('#clearFormating').click(function(e) {
+	e.preventDefault();
 	$(".lp_focusin").html( $(".lp_focusin").text() ).attr('style', '');
 });
 
