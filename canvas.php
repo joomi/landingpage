@@ -20,10 +20,6 @@
 </head>
 <body>
     <div role="canvas" class="lp_canvas">
-    <div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
-</div>
         <div class="lp_container" role="heading">
             <a href="http://sdf"><img src="images/placeholder.jpg" style="border-width:2px; border-style:dashed; border-color:#666" class="lp_img def_logo" data-role="lp_element" id="lp_logo" data-width="120" data-height="60" title="company name" alt="company name" /></a>
             <h1 data-role="text">Campaign title</h1>

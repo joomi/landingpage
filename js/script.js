@@ -2,9 +2,17 @@ jQuery(document).ready(function($) {
 	$('a').click(function(event){event.preventDefault()});
 	$('.lp_canvas input[type=submit]').click(function(event){event.preventDefault()});
 	$.base64.is_unicode = true;
-	$( "#myModal" ).draggable({ handle:'.modal-header'});
+	$( "#myModal" ).draggable({ 
+		handle:'.modal-header',
+		drag: function( event, ui ) {
+			$(this).css('opacity', 0.8);
+		},
+		stop: function( event, ui ) {
+			$(this).css('opacity', 1);
+		}
+	});
 	
-	$().enableUndo({ redoCtrlChar : 'y', redoShiftReq : false });
+//	$().enableUndo({ redoCtrlChar : 'y', redoShiftReq : false });
     $("*[data-role='lp_element']").each(function(){
 		if($(this).is("img"))
 		$(this).addClass('lp_img_element');
@@ -73,10 +81,10 @@ jQuery(document).ready(function($) {
 		var borderStyle = $(this).css('border-style');
 		var borderColor = $(this).css('border-color');
 		var float = $(this).css('float');
-		var marginTop = $(this).css('margin-top');
-		var marginLeft = $(this).css('margin-left');
-		var marginRight = $(this).css('margin-right');
-		var marginBottom = $(this).css('margin-bottom');		
+		var marginTop = parseInt($(this).css('margin-top'));
+		var marginLeft = parseInt($(this).css('margin-left'));
+		var marginRight = parseInt($(this).css('margin-right'));
+		var marginBottom = parseInt($(this).css('margin-bottom'));		
 		$.ajax({
 			url:'includes/lp_editor_panels/image.tpl.php',
 			data:'width='+width+'&height='+height+'&title='+title+'&alt='+alt+'&borderWidth='+borderWidth+'&borderStyle='+borderStyle+'&borderColor='+borderColor+'&float='+float+'&marginTop='+marginTop+'&marginLeft='+marginLeft+'&marginRight='+marginRight+'&marginBottom='+marginBottom+'&id='+id
@@ -101,7 +109,7 @@ jQuery(document).ready(function($) {
 			var value	  = (type == 'submit')?input.attr('value'):'';
 		//	var classx    = input.attr('class');
 			var remove    = (type != 'submit')?'<a class="lp_remove_field" title="Remove this field" alt="Remove this field" rel="'+id+'"></a>':'';
-			row = row + '<div class="lp_editor_row"><label for="label_'+id+'">Field label '+remove+'</label><input class="lp_form_label_update" type="text" data-id="'+id+'" data-type="'+type+'" value="'+label+value+'" /><label class="lesser">Input type is <i>'+type+'</i></label></div>';
+			row = row + '<div class="lp_editor_row" data-row="'+id+'"><input class="lp_form_label_update" type="text" data-id="'+id+'" data-type="'+type+'" value="'+label+value+'" />'+remove+'<label class="lesser">Input type is <i>'+type+'</i></label></div>';
         });
 		var base = $.base64.encode(encodeURI(row));
 		
@@ -200,10 +208,81 @@ function socialStatus(){
 	jQuery('.lp_footerSocialIcon').each(function(index, element) {
         var name = $(this).attr('rel');
         var url = $(this).attr('href');
+		$('#'+name).parent().addClass('active'); 
 		$('#'+name).attr('checked', true).parent().next().show().val(url); 
     });	
 }
 
+/*
+ * 
+ * jQuery.undoable()
+ *
+ * Copyright (c) 2009 Jared Mellentine - jared(at)mellentine(dot)com | http://design.mellentine.com
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+ * Date: 3/9/2009
+ * 
+ * Full documentation coming soon (or you can read the 55 lines below)
+ * 
+ */
+/*
+jQuery.fn.undoable = function(redo) {
+	var undo = (typeof arguments[1] == 'function') ? arguments[1] : redo;
+	redo();
+	var uf = jQuery('body').data('undoFunctions');		
+	if (typeof uf == 'object') uf.push([redo,undo]); else uf = [[redo,undo]];
+	if (jQuery('body').data('undoEnabled') !== true) $().enableUndo();
+	jQuery('body').data('undoFunctions', uf);
+	jQuery('body').data('redoFunctions', []); // reset the redo queue
+};
+
+jQuery.fn.enableUndo = function(params){
+	var defaults = {
+		undoCtrlChar : 'z',
+		redoCtrlChar : 'z',
+		redoShiftReq : true
+	};
+	var settings = jQuery.extend(defaults, params);
+	var undoChar = settings.undoCtrlChar.toUpperCase().charCodeAt();
+	var redoChar = settings.redoCtrlChar.toUpperCase().charCodeAt();
+	
+	jQuery(document).keydown(function(e){
+		// UNDO
+		if (e.ctrlKey && !e.shiftKey && e.which == undoChar) {
+			var uf = jQuery('body').data('undoFunctions');
+			if (typeof uf == 'object') {
+				var lf = uf.pop();
+				jQuery('body').data('undoFunctions', uf);
+
+				if (lf) {
+					var rf = jQuery('body').data('redoFunctions');
+					if (rf) rf.push(lf); else rf = [lf];
+					jQuery('body').data('redoFunctions', rf);
+
+					lf[1](); // undo is index 1
+				}
+			}
+		}
+		// REDO
+		if (e.ctrlKey && (e.shiftKey || !settings.redoShiftReq) && e.which == redoChar) {
+			var rf = jQuery('body').data('redoFunctions');
+			if (typeof rf == 'object') {
+				var lf = rf.pop();
+				jQuery('body').data('redoFunctions', rf);
+
+				if (lf) {
+					var uf = jQuery('body').data('undoFunctions');
+					if (uf) uf.push(lf); else uf = [lf];
+					jQuery('body').data('undoFunctions', uf);
+
+					lf[0](); // redo is index 0
+				}
+			}
+		}
+	});
+	jQuery('body').data('undoEnabled', true);
+};
+*/
 /*
 @desc
 	Base64 encoder and decoder write by JavaScript. This code was a plugin of 

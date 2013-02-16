@@ -14,34 +14,122 @@ _--------------------------------------_*/
 -moz-border-radius-bottomright: 9px;
 border-top-right-radius: 9px;
 border-bottom-right-radius: 9px;}
-#lp_editor h6{ background: #CCC; border-bottom:#666 solid 1px; margin: -18px 0px 13px; text-shadow:1px 1px #fff; padding: 12px; color: #EEA34A;}
-#lp_editor .lp_ctrl_title{ margin: -13px -11px 11px; text-shadow: 2px 2px #fff; padding: 12px; color: #EEA34A; display: block; border-bottom: 1px solid #999;}
+.lp_ctrl_title i[class^="icon-"], .lp_ctrl_title i[class*=" icon-"]{ padding-right:9px;}
+.lp_ctrl_title{ display:block; line-height:30px; font-size:16px; background-color: #E6E6E6; font-weight: bold; margin-bottom: 12px; padding-left: 4px;}
 .lp_editor_row{ font-size:13px; margin-bottom:13px;}
-.lp_editor_row .lp_icon{ width:29px; height:29px; display:block; float:left; cursor:pointer; margin-right:14px;}
-.lp_editor_row .bold{ background:url(../images/bold.png) no-repeat; }
-.lp_editor_row .normal{ background:url(../images/bold.png) no-repeat; opacity:0.7}
-.lp_editor_row .italic{ background:url(../images/italic.png) no-repeat;}
-.lp_editor_row .noStyle{ background:url(../images/italic.png) no-repeat; opacity:0.7}
-.lp_editor_row .underline{ background:url(../images/underline.png) no-repeat;}
-.lp_editor_row .noDecor{ background:url(../images/underline.png) no-repeat; opacity:0.7}
-.lp_editor_row .alineLeft{ background:url(../images/aline_left.png) no-repeat;}
-.lp_editor_row .alineCenter{ background:url(../images/aline_center.png) no-repeat;}
-.lp_editor_row .alineRight{ background:url(../images/aline_right.png) no-repeat;}
-.lp_editor_row label{ font-weight:bold; display:block; line-height:16px;}
+.lp_editor_row.half{ width:50%}
+.lp_editor_row.half input[type=text],.lp_editor_row.half input[type=email]{ width:147px}
+.lp_editor_row.half.left{ float:left}
+.lp_editor_row.cleared{ clear:both}
+.icon-underline{ text-decoration:underline; content:'U'}
+.lp_editor_row label{ font-weight:bold; display:block; margin-bottom: 4px;}
 .lp_editor_row select{ width:95%}
+.lp_editor_row.half select{ width: 160px; margin-right: 13px;}
 #closeEditor{width:99%; cursor:pointer; margin:12px 0; border:solid 1px #ccc; padding:10px 5%; -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
 .lp_panel_wrapper{ overflow:hidden;}
-#img_margin_top{ margin:5px 59px; text-align:center; width:35px}
+#img_margin_top{ margin:5px 148px; text-align:center; width:35px}
 #img_margin_left{ float:left; text-align:center; width:35px}
 #img_margin_right{ margin-right:8px; float:right;  text-align:center; width:35px}
-#img_margin_bottom{ margin:5px 59px; clear:both; text-align:center; width:35px}
-label.lesser{ font-size:12px; color:#333}
+#img_margin_bottom{ margin:5px 148px; clear:both; text-align:center; width:35px}
+label.lesser{ font-size:12px; color:#333; font-weight:normal;}
+label.lesser i{ font-weight:bold;}
 a.lp_remove_field{ display: inline-block; width:18px; height:18px; background:url(../images/remove.png) no-repeat; cursor:pointer; margin-left: 5px;}
-a.lp_remove_block{ display: block; position:absolute; top:-6px; right:-6px; padding:4px; width:18px; height:18px; background:url(../images/remove.png) no-repeat; cursor:pointer;}
+a.lp_remove_block{ display: block; position:absolute; top:-6px; right:-14px; padding:4px; width:18px; height:18px; background:url(../images/remove.png) no-repeat; cursor:pointer;}
 .lp_element{ position:relative;}
 .lp_form_row{ clear:both}
-iframe:hover{ padding:35px 0 0 0 !important; background: url(../images/clickToEditVideo.png) 100% 0 no-repeat }
+iframe:hover{ padding:35px 0 0 0 !important; background: url(../images/clickToEditVideo.png) 100% 0 no-repeat; cursor:pointer; }
 .modal-header{ cursor:move}
+.lp_form_current .lp_editor_row{ border-bottom:#e6e6e6 solid 1px; padding-bottom:5px;}
+.lp_form_current .lp_editor_row input{ margin-bottom:2px;}
+.btn-toolbar .btn{ padding:0 12px 10px !important;}
+.ui-slider-horizontal{ margin:12px 0}
+.lp_checkbox_list label{ display:block;opacity:0.7; padding-left:30px; margin-bottom:7px; height:20px; background-image:url(../images/socialIcons_s.png); background-repeat:no-repeat;}
+.lp_checkbox_list label.active{ opacity:1}
+.lp_checkbox_list label input{ visibility:hidden; position:absolute; top:-9999px;}
+.lp_Twitter{ background-position:0 0;}
+.lp_Youtube{ background-position:0 -36px;}
+.lp_Myspace{ background-position:0 -73px; }
+.lp_Wordpress{ background-position:0 -110px; }
+.lp_Facebook{ background-position:0 -146px;}
+.lp_Flicker{ background-position:0 -183px;}
+.lp_Delicious{ background-position:0 -219px;}
+.lp_Bebo{ background-position:0 -255px;}
+.lp_Lastfm{ background-position:0 -292px;}
+.lp_Digg{ background-position:0 -328px;}
+.lp_Linkedin{ background-position:0 -364px;}
+.lp_Skype{ background-position:0 -401px;}
+.lp_Evenote{ background-position:0 -437px;}
+.lp_Googlemap{ background-position:0 -474px;}
+.lp_Picasa{ background-position:0 -510px;}
+.lp_Yahoo{ background-position:0 -547px;}
+.lp_Blogger{ background-position:0 -584px;}
+
+
+.ui-slider {
+	position: relative;
+	text-align: left;
+}
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 1.2em;
+	height: 1.2em;
+	cursor: default;
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+}
+
+/* For IE8 - See #6727 */
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+	filter: inherit;
+}
+
+.ui-slider-horizontal {
+	height: .8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	top: -.3em;
+	margin-left: -.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+	left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+	right: 0;
+}
+
+.ui-slider-vertical {
+	width: .8em;
+	height: 100px;
+}
+.ui-slider-vertical .ui-slider-handle {
+	left: -.3em;
+	margin-left: 0;
+	margin-bottom: -.6em;
+}
+.ui-slider-vertical .ui-slider-range {
+	left: 0;
+	width: 100%;
+}
+.ui-slider-vertical .ui-slider-range-min {
+	bottom: 0;
+}
+.ui-slider-vertical .ui-slider-range-max {
+	top: 0;
+}
+
+
 
  /*
 	Colorpicker for Bootstrap
@@ -229,7 +317,7 @@ h2, h3 {
 body {
 	margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 1em;
 	line-height: 20px;
 	color: #333;
 	background-color: #fff
@@ -859,7 +947,7 @@ legend small {
 	color: #999
 }
 label, input, button, select, textarea {
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: normal;
 	line-height: 20px
 }
@@ -875,7 +963,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	height: 20px;
 	padding: 4px 6px;
 	margin-bottom: 10px;
-	font-size: 14px;
+	font-size: 1em;
 	line-height: 20px;
 	color: #555;
 	vertical-align: middle;
@@ -900,7 +988,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	-o-transition: border linear .2s, box-shadow linear .2s;
 	transition: border linear .2s, box-shadow linear .2s
 }
-textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, .lp_form_row .focus {
 	border-color: rgba(82,168,236,0.8);
 	outline: 0;
 	outline: thin dotted \9;
@@ -1043,7 +1131,7 @@ input.span3, textarea.span3, .uneditable-input.span3 {
 	width: 206px
 }
 input.span2, textarea.span2, .uneditable-input.span2 {
-	width: 126px
+	width: 121px
 }
 input.span1, textarea.span1, .uneditable-input.span1 {
 	width: 46px
@@ -1212,7 +1300,7 @@ box-shadow:0 0 6px #f8b9b7
 	vertical-align: middle
 }
 .input-append input, .input-prepend input, .input-append select, .input-prepend select, .input-append .uneditable-input, .input-prepend .uneditable-input, .input-append .dropdown-menu, .input-prepend .dropdown-menu, .input-append .popover, .input-prepend .popover {
-	font-size: 14px
+	font-size: 1em
 }
 .input-append input, .input-prepend input, .input-append select, .input-prepend select, .input-append .uneditable-input, .input-prepend .uneditable-input {
 	position: relative;
@@ -1232,7 +1320,7 @@ box-shadow:0 0 6px #f8b9b7
 	height: 20px;
 	min-width: 16px;
 	padding: 4px 5px;
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: normal;
 	line-height: 20px;
 	text-align: center;
@@ -2296,7 +2384,7 @@ button.close {
 	padding: 4px 12px;
 	margin-bottom: 0;
 *margin-left:.3em;
-	font-size: 14px;
+	font-size: 1em;
 	line-height: 20px;
 	color: #333;
 	text-align: center;
@@ -2637,7 +2725,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	margin-left: -1px
 }
 .btn-group>.btn, .btn-group>.dropdown-menu, .btn-group>.popover {
-	font-size: 14px
+	font-size: 1em
 }
 .btn-group>.btn-mini {
 	font-size: 10.5px
@@ -3981,7 +4069,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 .popover-title {
 	padding: 8px 14px;
 	margin: 0;
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: normal;
 	line-height: 18px;
 	background-color: #f7f7f7;

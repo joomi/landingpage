@@ -1,20 +1,26 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Form basics</span>
-    <div class="lp_editor_row">
+    <span class="lp_ctrl_title"><i class="icon-th-large"></i>Form basics</span>
+    <div class="lp_editor_row half left">
     	<label for="form_email">Send leads to:</label>
         <input class="" type="email" placeholder="Type your email" id="form_email" />
+	</div>
+    <div class="lp_editor_row half left">
     	<label for="form_subject">Form subject:</label>
         <input class="" type="text" placeholder="Type your subject" id="form_subject" />
+	</div>
+    <div class="lp_editor_row cleared">
     	<label for="form_analytics"><input type="checkbox" id="form_analytics" /> Gether form analytics and submitions?</label>
 	</div>
-    <span class="lp_ctrl_title">Edit your current fields</span>
+    <span class="lp_ctrl_title"><i class="icon-list"></i>Edit your current fields</span>
     <div class="lp_form_current">
   	<?php echo urldecode(base64_decode($_GET['base']))?>
 	</div>
-    <span class="lp_ctrl_title">Add a new field</span>    
-    <div class="lp_editor_row">
+    <span class="lp_ctrl_title"><i class="icon-plus-sign"></i>Add a new field</span>    
+    <div class="lp_editor_row half left">
     	<label for="newlabel">Field label</label>
         <input class="lp_form_label_update" type="text" id="newlabel" />
+    </div>
+    <div class="lp_editor_row half left">
         <label for="newtype">Select input type</label>
         <select id="newtype" class="lp_form_type_update">
             <option value="text">Text</option>
@@ -22,19 +28,33 @@
             <option value="email">Email</option>
             <option value="checkbox">Checkbox</option>
         </select>
-        <input type="button" id="addField" value="Add this field >" />
+    </div>    
+    <div class="lp_editor_row cleared">
+        <button id="addField" class="btn"><i class="icon-arrow-right"></i> Add this field</button>
     </div>
-    <span class="lp_ctrl_title">Edit form text</span>        
+    <span class="lp_ctrl_title"><i class="icon-list-alt"></i>Edit form text</span>        
     <div class="lp_editor_row">
-        <a href="#" class="bold lp_icon"></a>
-        <a href="#" class="normal lp_icon" style="display:none;"></a>
-        <a href="#" class="italic lp_icon"></a>
-        <a href="#" class="noStyle lp_icon" style="display:none;"></a>
-        <a href="#" class="underline lp_icon"></a>
-        <a href="#" class="noDecor lp_icon" style="display:none;"></a>
+        <div class="btn-toolbar" style="float:left;">
+          <div class="btn-group">
+            <a class="btn alineLeft" href="#"><i class="icon-align-left"></i></a>
+            <a class="btn alineCenter" href="#"><i class="icon-align-center"></i></a>
+            <a class="btn alineRight" href="#"><i class="icon-align-right"></i></a>
+            <a class="btn alignJust" href="#"><i class="icon-align-justify"></i></a>
+          </div>
+        </div>   
+        <div class="btn-toolbar" style="float:left; margin-left:19px;">
+          <div class="btn-group">
+            <a href="#" class="bold btn"><i class="icon-bold"></i></a>
+            <a href="#" class="normal btn" style="display:none;"><i class="icon-bold"></i></a>
+            <a href="#" class="italic btn"><i class="icon-italic"></i></a>
+            <a href="#" class="noStyle btn" style="display:none;"><i class="icon-italic"></i></a>
+            <a href="#" class="underline btn"><i class="icon-underline" style="font-size:14px; font-weight:bold;">U</i></a>
+            <a href="#" class="noDecor btn" style="display:none;"><i class="icon-underline" style="font-size:14px; font-weight:bold;">U</i></a>
+          </div>
+        </div>   
         <div class="clear"></div>    
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row half left">
         <label for="font_family">Font family</label>
         <select id="font_family">
             <option value="">Select font family</option>
@@ -48,112 +68,103 @@
             <option style="font-family:'Comic Sans MS', 'cursive'" value='"Comic Sans MS", cursive'>Comic Sans MS</option>
         </select>
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row half left">
         <label for="font_size">Font size</label>
-        <select id="font_size">
-            <option value="">Select font size</option>
-            <option value="8px">8</option>
-            <option value="9px">9</option>
-            <option value="10px">10</option>
-            <option value="11px">11</option>
-            <option value="12px">12</option>
-            <option value="15px">15</option>
-            <option value="17px">17</option>
-            <option value="20px">20</option>
-            <option value="24px">24</option>
-            <option value="30px">30</option>
-            <option value="35px">35</option>
-            <option value="40px">40</option>
-            <option value="50px">50</option>
-            <option value="70px">70</option>
-        </select>
+        <div id="font_size"></div>
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row cleared">
         <label for="colorPicker">Text color</label>
-        <div id="colorSelector"><div style="background-color: rgb(59, 59, 143);"></div></div>
-        <input type="text" id="colorPicker" />
+        <div class="input-append color" data-color="rgb(000, 000, 000)" data-color-format="hex" id="cp3" style="float:left;">
+            <input type="text" class="span2" style="font-size:14px;" value="#000000">
+            <span class="add-on"><i></i></span>
+        </div>
+        <button id="clearFormating" class="btn btn-inverse" style="float:left; margin-left:19px;"><i class="icon-leaf"></i> Clear formating </button>
         <div class="clear"></div>
-    </div>
-    <div class="lp_editor_row">
-        <input type="button" id="clearFormating" value="Clear formating">
-    </div>
-
-    <div class="lp_editor_row">
-        <input type="button" id="closeEditor" onclick="edit('off');" value="I'm done here" />
     </div>
 </div>
 <script>
-$('#lp_editor h6').text('Editor pannel - Form');
-
-$('#colorPicker').ColorPicker({
-	onSubmit: function(hsb, hex, rgb, el) {
-		$(el).val(hex);
-		$(el).ColorPickerHide();
-	},
-	onBeforeShow: function () {
-		$(this).ColorPickerSetColor(this.value);
-	},
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_form_row input,.lp_form_row label,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);		
-	}
-})
-.bind('keyup', function(){
-	$(this).ColorPickerSetColor(this.value);
+$('#myModalLabel').text('Editor pannel - Form');
+$('#cp3').colorpicker().on('changeColor', function(ev){
+	$('.lp_form_row input,.lp_form_row label').css('color', ev.color.toHex());
+	$('input', this).val(ev.color.toHex());
 });
-$('#colorSelector').ColorPicker({
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},	
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_form_row input,.lp_form_row label,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);
-		$('#colorPicker').val(hex);
-	}
+$('#cp3 input').focusout( function(){
+	$('.lp_focusin').css('color', $(this).val());
 });
 
-$('.bold').click(function() {
+$('div[data-row]').mouseenter(function(e) {
+    var id = $(this).attr('data-row');
+	$('#'+id).addClass('focus');
+}).mouseleave(function(e) {
+    var id = $(this).attr('data-row');
+	$('#'+id).removeClass('focus');
+});;
+$('.bold').click(function(e) {
+	e.preventDefault();
    $(this).hide();
    $('.normal').show(); 
    $('.lp_form_row label').css('font-weight', 'bold');	
 });
-$('.normal').click(function() {
+$('.normal').click(function(e) {
+	e.preventDefault();
    $('.lp_form_row label').css('font-weight', 'normal');	
    $(this).hide();
    $('.bold').show(); 
 });
-$('.italic').click(function() {
+$('.italic').click(function(e) {
+	e.preventDefault();
    $('.lp_form_row input,.lp_form_row label').css('font-style', 'italic'); 
    $(this).hide();
    $('.noStyle').show(); 
 });
-$('.noStyle').click(function() {
+$('.noStyle').click(function(e) {
+	e.preventDefault();
    $('.lp_form_row input,.lp_form_row label').css('font-style', 'normal'); 
    $(this).hide();
    $('.italic').show(); 
 });
-$('.underline').click(function() {
+$('.underline').click(function(e) {
+	e.preventDefault();
    $('.lp_form_row label').css('text-decoration', 'underline'); 
    $(this).hide();
    $('.noDecor').show(); 
 });
-$('.noDecor').click(function() {
+$('.noDecor').click(function(e) {
+	e.preventDefault();
    $('.lp_form_row label').css('text-decoration', 'none'); 
    $(this).hide();
    $('.underline').show(); 
 });
+$('.alineLeft').click(function(e) {
+	e.preventDefault();
+   $('.lp_form_row input,.lp_form_row label').css('text-align', 'left'); 
+});
+$('.alineCenter').click(function(e) {
+	e.preventDefault();
+   $('.lp_form_row input,.lp_form_row label').css('text-align', 'center'); 
+});
+$('.alineRight').click(function(e) {
+	e.preventDefault();
+   $('.lp_form_row input,.lp_form_row label').css('text-align', 'right'); 
+});
+$('.alignJust').click(function(e) {
+	e.preventDefault();
+   $('.lp_form_row input,.lp_form_row label').css('text-align', 'justify'); 
+});
 $('#font_family').change(function(e) {
     $('.lp_form_row input,.lp_form_row label').css('font-family', $(this).val()); 
 });
-$('#font_size').change(function(e) {
-    $('.lp_form_row input,.lp_form_row label').css('font-size', $(this).val()); 
+$('#font_size').slider({ 
+	max:  25,
+	min:  1,
+	step: 1,
+	value: 10,
+	slide: function( event, ui ) {
+    	$('.lp_form_row input,.lp_form_row label').css('font-size', (ui.value / 10) + 'em'); 
+	}
 });
 $('#clearFormating').click(function(e) {
+	e.preventDefault();
 	$(".lp_form_row input,.lp_form_row label").attr('style', '');
 });
 $('.lp_form_label_update').focusout(function(e) {
@@ -168,8 +179,8 @@ $('.lp_form_label_update').focusout(function(e) {
 $('.lp_remove_field').click(function(e) {
 	e.preventDefault();
     var id = $(this).attr('rel');
-	$('#'+id).parent().remove();
-	$(this).parent().parent().remove();
+	$('#'+id).parent().fadeOut(500,'linear',function(){$('#'+id).parent().remove()});
+	$(this).parent().fadeOut(500,'linear',function(){$(this).remove()});
 });
 $('#addField').click(function(e) {
 	e.preventDefault();

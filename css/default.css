@@ -15,7 +15,7 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_contentCol p{ margin:12px 0}
 .def_formHolder label{ float:left; width:42%; line-height:30px;}
 .def_formHolder .def_inputbox { clear:left; border:solid 1px #ccc; width:52%; padding:2%; margin-bottom:10px; -moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2); -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);}
-.def_formHolder .def_inputbox:focus {border:solid 1px #EEA34A;}
+.def_formHolder .def_inputbox:focus, .lp_form_row .focus {border:solid 1px #EEA34A;}
 .def_formHolder .def_inputbox:hover {-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 0px 11px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 0px 11px rgba(0, 0, 0, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 0px 11px rgba(0, 0, 0, 0.2);}
 .def_formHolder .def_confirm { float:none; width:100%; clear:both; display:block;}
 .def_formHolder .def_submit {width:99%; cursor:pointer; margin:12px 0; border:solid 1px #ccc; padding:10px 5%; -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
@@ -26,17 +26,25 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_footerNav{ margin:0 auto; text-align:center; padding:0 0;}
 .def_footerNav li{text-align:center; display:inline-block; padding:0 5px; margin:0 0;}
 .def_footerNav li a{ display:block; line-height:20px; color:#EEA34A;}
-.lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:32px; height:32px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
+.lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:33px; height:33px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
 
-.def_Facebook{ background-position:0 0;}
-.def_Youtube{ background-position:-34px 0;}
-.def_Blogger{ background-position:-67px 0;}
-.def_Twitter{ background-position:-34px -32px;}
-.def_Yahoo{ background-position:-99px -32px;}
-.def_Google{ background-position:-34px -64px;}
-.def_Linkedin{ background-position:-67px -64px;}
-.def_Flicker{ background-position:-67px -32px;}
-.def_Myspace{ background-position:-99px 0; }
+.def_Twitter{ background-position:0 0;}
+.def_Youtube{ background-position:0 -60px;}
+.def_Myspace{ background-position:0 -120px; }
+.def_Wordpress{ background-position:0 -180px; }
+.def_Facebook{ background-position:0 -240px;}
+.def_Flicker{ background-position:0 -300px;}
+.def_Delicious{ background-position:0 -360px;}
+.def_Bebo{ background-position:0 -420px;}
+.def_Lastfm{ background-position:0 -480px;}
+.def_Digg{ background-position:0 -540px;}
+.def_Linkedin{ background-position:0 -600px;}
+.def_Skype{ background-position:0 -660px;}
+.def_Evenote{ background-position:0 -720px;}
+.def_Googlemap{ background-position:0 -780px;}
+.def_Picasa{ background-position:0 -840px;}
+.def_Yahoo{ background-position:0 -902px;}
+.def_Blogger{ background-position:0 -963px;}
 
 
 

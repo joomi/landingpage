@@ -1,20 +1,25 @@
 <div class="lp_panel_wrapper">
-    <span class="lp_ctrl_title">Replace the image</span>
+    <span class="lp_ctrl_title"><i class="icon-refresh"></i>Replace the image</span>
+	<button class="btn btn-danger" id="remove_img" style="margin-bottom:20px; float:right">Remove this image!</button>
 	<input type="file" id="upload_img" />
-    <span class="lp_ctrl_title">Image Editor</span>
-    <div class="lp_editor_row">
+    <span class="lp_ctrl_title"><i class="icon-picture"></i>Image Editor</span>
+    <div class="lp_editor_row half left">
 		<label for="img_width">Image width (in pixels)</label>
         <input type="text" id="img_width" value="<?php echo $_GET['width']; ?>" />
+	</div>
+    <div class="lp_editor_row half left">
 		<label for="img_height">Image height (in pixels)</label>
         <input type="text" id="img_height" value="<?php echo $_GET['height']; ?>" />
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row half left">
 		<label for="img_title">Image title</label>
         <input type="text" id="img_title" value="<?php echo $_GET['title']; ?>" />
+	</div>
+    <div class="lp_editor_row half left">
 		<label for="img_alt">Image alt</label>
         <input type="text" id="img_alt" value="<?php echo $_GET['alt']; ?>" />
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row cleared">
         <label for="img_float">Float image</label>
         <select id="img_float" data-style="float">
         	<option value="">Float direction</option>
@@ -22,16 +27,17 @@
         	<option <?php echo ($_GET['float'] == 'Right')?'selected="selected" ':''; ?> value="right">Right</option>
         	<option <?php echo ($_GET['float'] == 'None')?'selected="selected" ':''; ?> value="none">None</option>
         </select>
-		<label for="img_margin">Image margin</label>
-        <input type="text" id="img_margin_top" placeholder="top" value="<?php echo $_GET['marginTop']; ?>" data-style="margin-top" />
-        <input type="text" id="img_margin_left" placeholder="left" value="<?php echo $_GET['marginLeft']; ?>" data-style="margin-left" />
-        <input type="text" id="img_margin_right" placeholder="right" value="<?php echo $_GET['marginRight']; ?>" data-style="margin-right" />
-        <input type="text" id="img_margin_bottom" placeholder="bottom" value="<?php echo $_GET['marginBottom']; ?>" data-style="margin-bottom" />
+		<label for="img_margin">Image margin (in pixels)</label>
+        <input type="number" id="img_margin_top" placeholder="top" value="<?php echo $_GET['marginTop']; ?>" data-style="margin-top" />
+        <input type="number" id="img_margin_left" placeholder="left" value="<?php echo $_GET['marginLeft']; ?>" data-style="margin-left" />
+        <input type="number" id="img_margin_right" placeholder="right" value="<?php echo $_GET['marginRight']; ?>" data-style="margin-right" />
+        <input type="number" id="img_margin_bottom" placeholder="bottom" value="<?php echo $_GET['marginBottom']; ?>" data-style="margin-bottom" />
     </div>
     <div class="lp_editor_row">
 		<label for="img_clear"><input type="checkbox" id="img_clear" value="1" /> Add clear fix </label>
     </div>    
-    <div class="lp_editor_row">
+    <span class="lp_ctrl_title"><i class="icon-fullscreen"></i>Image Border</span>
+    <div class="lp_editor_row half left">
         <label for="img_border">Image border</label>
         <select id="img_border_width" data-style="border-width">
         	<option value="0">Select border width</option>
@@ -44,6 +50,9 @@
         	<option <?php echo ($_GET['borderWidth'] == '10px')?'selected="selected" ':''; ?> value="10px">10px</option>
         	<option <?php echo ($_GET['borderWidth'] == '15px')?'selected="selected" ':''; ?> value="15px">15px</option>
         </select>
+    </div>    
+    <div class="lp_editor_row half left">
+    	<label for="img_border_style">Style </label>
         <select id="img_border_style" data-style="border-style">
         	<option value="0">Select border style</option>
         	<option <?php echo ($_GET['borderStyle'] == 'solid')?'selected="selected" ':''; ?> value="solid">solid</option>
@@ -55,62 +64,36 @@
         	<option <?php echo ($_GET['borderStyle'] == 'outset')?'selected="selected" ':''; ?> value="outset">outset</option>
         	<option <?php echo ($_GET['borderStyle'] == 'ridge')?'selected="selected" ':''; ?> value="ridge">ridge</option>
         </select>
+    </div>
+    <div class="lp_editor_row cleared">
         <label for="colorPicker">Border color</label>
-        <div id="colorSelector"><div style="background-color: <?php echo $_GET['borderColor']; ?>;"></div></div>
-        <input type="text" id="colorPicker" value="<?php echo $_GET['borderColor']; ?>" />
+        <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="hex" id="cp3">
+            <input type="text" class="span2" value="" readonly="">
+            <span class="add-on"><i></i></span>
+        </div>
         <div class="clear"></div>        
     </div> 
+    <span class="lp_ctrl_title"><i class="icon-hand-up"></i>Image Link</span>
     <div class="lp_editor_row">
 		<label for="img_width">Link image</label>
-        <input type="url" id="img_link" value="<?php echo ($_GET['link'] != 'undefined')?$_GET['link']:''; ?>" />
-    </div>
-    <div class="lp_editor_row">
-        <input type="button" id="closeEditor" onclick="edit('off');" value="I'm done here" />
+        <input type="url" id="img_link" placeholder="http://YOUR_VALID_URL.COM" value="<?php echo ($_GET['link'] != 'undefined')?$_GET['link']:''; ?>" />
     </div>
 </div>
 <script>
-$('#lp_editor h6').text('Editor pannel - Image');
+$('#myModalLabel').text('Editor pannel - Image');
 
-$('#colorPicker').ColorPicker({
-	onSubmit: function(hsb, hex, rgb, el) {
-		$(el).val(hex);
-		$(el).ColorPickerHide();
-	},
-	onBeforeShow: function () {
-		$(this).ColorPickerSetColor(this.value);
-	},
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},	
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
-		$('#<?php echo $_GET['id']; ?>').css('borderColor', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);		
-	}
-})
-.bind('keyup', function(){
-	$(this).ColorPickerSetColor(this.value);
-});
-$('#colorSelector').ColorPicker({
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onChange: function (hsb, hex, rgb) {
-		$('#<?php echo $_GET['id']; ?>').css('borderColor', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);
-		$('#colorPicker').val(hex);
-	}
+$('#cp3').colorpicker().on('changeColor', function(ev){
+	$('.lp_focusin').css('color', ev.color.toHex());
 });
 $('#upload_img').uploadify({
     'swf'      : 'images/uploadify.swf',
 	'uploader' : 'includes/lib/uploadify.php',
 	'fileObjName' : 'image_field',
-	'width'    : '130',
+	'width'    : '160',
+	'height'    : '26',
     'formData' : {'width' : '<?php echo $_GET['width']; ?>', 'reflection' : 1},	
 	'preventCaching' : false,
-	'buttonText' : 'Select an image...',
+	'buttonText' : 'Select a new image...',
 	'fileSizeLimit' : '2MB',
 	'fileTypeDesc' : 'Image Files',
 	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -118,6 +101,12 @@ $('#upload_img').uploadify({
 		$('#<?php echo $_GET['id']; ?>').attr('src', data);
 	}
 	
+});
+$('#remove_img').click(function(e) {
+    e.preventDefault();
+	$('#<?php echo $_GET['id']; ?>').parent('a').remove();
+	$('#<?php echo $_GET['id']; ?>').remove();
+	edit('off');
 });
 $('#img_width').focusout(function() {
 	$('#<?php echo $_GET['id']; ?>').attr('width', $(this).val()).css('width',$(this).val());
@@ -134,8 +123,11 @@ $('#img_alt').focusout(function() {
 $('select').change(function() {
 	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val());
 });
+$('#img_margin_top,#img_margin_left,#img_margin_right,#img_margin_bottom').click(function() {
+	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val() + 'px');
+});
 $('#img_margin_top,#img_margin_left,#img_margin_right,#img_margin_bottom').focusout(function() {
-	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val());
+	$('#<?php echo $_GET['id']; ?>').css($(this).attr('data-style'), $(this).val() + 'px');
 });
 $('#img_clear').click(function() {
     if (this.checked) {

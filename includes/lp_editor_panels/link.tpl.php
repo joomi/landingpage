@@ -1,18 +1,31 @@
 <div class="lp_panel_wrapper">
     <div class="lp_editor_row">
 		<label for="img_width">Link url</label>
-        <input type="url" id="url_link" value="<?php echo $_GET['link']; ?>" />
+        <input type="url" id="url_link" placeholder="http://" value="<?php echo $_GET['link']; ?>" />
     </div>
     <div class="lp_editor_row">
-        <a href="#" class="bold lp_icon"></a>
-        <a href="#" class="normal lp_icon" style="display:none;"></a>
-        <a href="#" class="italic lp_icon"></a>
-        <a href="#" class="noStyle lp_icon" style="display:none;"></a>
-        <a href="#" class="underline lp_icon"></a>
-        <a href="#" class="noDecor lp_icon" style="display:none;"></a>
+        <div class="btn-toolbar" style="float:left;">
+          <div class="btn-group">
+            <a class="btn alineLeft" href="#"><i class="icon-align-left"></i></a>
+            <a class="btn alineCenter" href="#"><i class="icon-align-center"></i></a>
+            <a class="btn alineRight" href="#"><i class="icon-align-right"></i></a>
+            <a class="btn alignJust" href="#"><i class="icon-align-justify"></i></a>
+          </div>
+        </div>   
+        <div class="btn-toolbar" style="float:left; margin-left:19px;">
+          <div class="btn-group">
+            <a href="#" class="bold btn"><i class="icon-bold"></i></a>
+            <a href="#" class="normal btn" style="display:none;"><i class="icon-bold"></i></a>
+            <a href="#" class="italic btn"><i class="icon-italic"></i></a>
+            <a href="#" class="noStyle btn" style="display:none;"><i class="icon-italic"></i></a>
+            <a href="#" class="underline btn"><i class="icon-underline" style="font-size:14px; font-weight:bold;">U</i></a>
+            <a href="#" class="noDecor btn" style="display:none;"><i class="icon-underline" style="font-size:14px; font-weight:bold;">U</i></a>
+          </div>
+        </div>   
+        
         <div class="clear"></div>    
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row half left">
         <label for="font_family">Font family</label>
         <select id="font_family">
             <option value="">Select font family</option>
@@ -26,73 +39,25 @@
             <option style="font-family:'Comic Sans MS', 'cursive'" value='"Comic Sans MS", cursive'>Comic Sans MS</option>
         </select>
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row half left">
         <label for="font_size">Font size</label>
-        <select id="font_size">
-            <option value="">Select font size</option>
-            <option value="8px">8</option>
-            <option value="9px">9</option>
-            <option value="10px">10</option>
-            <option value="11px">11</option>
-            <option value="12px">12</option>
-            <option value="15px">15</option>
-            <option value="17px">17</option>
-            <option value="20px">20</option>
-            <option value="24px">24</option>
-            <option value="30px">30</option>
-            <option value="35px">35</option>
-            <option value="40px">40</option>
-            <option value="50px">50</option>
-            <option value="70px">70</option>
-        </select>
+        <div id="font_size"></div>
     </div>
-    <div class="lp_editor_row">
+    <div class="lp_editor_row cleared">
         <label for="colorPicker">Text color</label>
-        <div id="colorSelector"><div style="background-color: rgb(59, 59, 143);"></div></div>
-        <input type="text" id="colorPicker" />
+        <div class="input-append color" data-color="rgb(000, 000, 000)" data-color-format="hex" id="cp3" style="float:left;">
+            <input style="font-size:14px;" type="text" class="span2" value="#000000">
+            <span class="add-on"><i></i></span>
+        </div>
+        <button id="clearFormating" class="btn btn-inverse" style="float:left; margin-left:19px;"><i class="icon-leaf"></i> Clear formating </button>
         <div class="clear"></div>
-    </div>
-    <div class="lp_editor_row">
-        <input type="button" id="clearFormating" value="Clear formating">
-    </div>
-    
-    <div class="lp_editor_row">
-        <input type="button" id="closeEditor" onclick="edit('off');" value="I'm done here" />
     </div>
 </div>
 <script>
-$('#lp_editor h6').text('Editor pannel - Link');
-
-$('#colorPicker').ColorPicker({
-	onSubmit: function(hsb, hex, rgb, el) {
-		$(el).val(hex);
-		$(el).ColorPickerHide();
-	},
-	onBeforeShow: function () {
-		$(this).ColorPickerSetColor(this.value);
-	},
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);		
-	}
-})
-.bind('keyup', function(){
-	$(this).ColorPickerSetColor(this.value);
-});
-$('#colorSelector').ColorPicker({
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},	
-	onChange: function (hsb, hex, rgb) {
-		$('.lp_focusin,#colorPicker').css('color', '#' + hex);
-		$('#colorSelector div').css('backgroundColor', '#' + hex);
-		$('#colorPicker').val(hex);
-	}
+$('#myModalLabel').text('Editor pannel - Link');
+$('#cp3').colorpicker().on('changeColor', function(ev){
+	$('.lp_focusin').css('color', ev.color.toHex());
+	$('input', this).val(ev.color.toHex());
 });
 
 $('.bold').click(function() {
@@ -134,8 +99,14 @@ $('.noDecor').click(function() {
 $('#font_family').change(function(e) {
     $('.lp_focusin').css('font-family', $(this).val()); 
 });
-$('#font_size').change(function(e) {
-    $('.lp_focusin').css('font-size', $(this).val()); 
+$('#font_size').slider({ 
+	max:  25,
+	min:  1,
+	step: 1,
+	value: 10,
+	slide: function( event, ui ) {
+    	$('.lp_focusin').css('font-size', (ui.value / 10) + 'em'); 
+	}
 });
 $('#clearFormating').click(function(e) {
 	$(".lp_focusin").html( $(".lp_focusin").text() ).attr('style', '');
