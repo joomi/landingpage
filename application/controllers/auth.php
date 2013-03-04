@@ -69,7 +69,7 @@ class Auth extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect(base64_decode($this->input->post('return')), 'refresh');
 			}
 			else
 			{
@@ -109,7 +109,7 @@ class Auth extends CI_Controller {
 
 		//redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('/', 'refresh');
 	}
 
 	//change password
@@ -408,9 +408,21 @@ class Auth extends CI_Controller {
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email))
 		{
 			//check to see if we are creating the user
-			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-		//	redirect("auth", 'refresh');
+			//login
+			if ($this->ion_auth->login($email, $password))
+			{
+				//if the login is successful
+				//redirect them back to the home page
+				redirect('/', 'refresh');
+			}
+			else
+			{
+				//if the login was un-successful
+				//redirect them back to the login page
+				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+			}
 		}
 		else
 		{
@@ -444,6 +456,71 @@ class Auth extends CI_Controller {
 			);
 
 			$this->_render_page('auth/create_user', $this->data);
+		}
+	}
+
+	//create a new user
+	function join()
+	{
+		if ($this->ion_auth->logged_in() || $this->ion_auth->is_admin())return false;
+		//validate form input
+		$this->form_validation->set_rules('full_name', 'Full Name', 'required|xss_clean');
+		$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required');
+
+		if ($this->form_validation->run() == true)
+		{
+			$username = strtolower($this->input->post('full_name'));
+			$email    = $this->input->post('email');
+			$password = $this->input->post('password');
+		}
+		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email))
+		{
+			//login
+			if (!$this->ion_auth->login($email, $password))
+			{
+				//if the login was un-successful
+				//redirect them back to the login page
+				$this->session->set_flashdata('message', $this->ion_auth->errors());
+			} else {
+				$folder = base64_encode($email);
+				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder, 0755);
+				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder. DS . 'images', 0755);
+			}
+		}
+		else
+		{
+			//display the create user form
+			//set the flash data error message if there is one
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+
+			$this->data['full_name'] = array(
+				'name'  => 'full_name',
+				'id'    => 'full_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('full_name'),
+			);
+			$this->data['email'] = array(
+				'name'  => 'email',
+				'id'    => 'email',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('email'),
+			);
+			$this->data['password'] = array(
+				'name'  => 'password',
+				'id'    => 'password',
+				'type'  => 'password',
+				'value' => $this->form_validation->set_value('password'),
+			);
+			$this->data['password_confirm'] = array(
+				'name'  => 'password_confirm',
+				'id'    => 'password_confirm',
+				'type'  => 'password',
+				'value' => $this->form_validation->set_value('password_confirm'),
+			);
+
+			$this->_render_page('auth/join', $this->data);
 		}
 	}
 

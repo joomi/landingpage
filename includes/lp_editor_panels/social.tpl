@@ -45,7 +45,7 @@ $('#myModalLabel').text('Editor pannel - Social networks');
 
 $('.check_social').click(function() {
 	var name = $(this).attr('id');
-	var url = $(this).parent().next().val(); 
+	var url = ($(this).parent().next().val())?$(this).parent().next().val():'#'; 
     if (this.checked) {
         $('.lp_social_container').append('<a href="'+url+'" contenteditable="false" class="lp_footerSocialIcon def_'+name+'" rel="'+name+'"></a>');
 		$(this).parent().next().fadeIn(); 

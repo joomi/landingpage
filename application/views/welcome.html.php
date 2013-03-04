@@ -1,3 +1,6 @@
+<?php 
+$user = $this->ion_auth->user()->row();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,19 +42,27 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                <?php if (!$this->ion_auth->logged_in()){?>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdownxx">Signin <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle">Signin <b class="caret"></b></a>				  
                   <ul class="dropdown-menu lp_signin">
-                    <li class="nav-header"><form action="#" method="post" id="signin"><label for="user_name">User Name</label></li>
-                    <li><input type="text" id="user_name"></li>
+                    <li class="nav-header"><form action="<?php echo base_url();?>index.php/auth/login" method="post" accept-charset="utf-8"><label for="user_name">User Name</label></li>
+                    <li><input type="text" id="identity" name="identity"></li>
                     <li class="nav-header"><label for="password">Password</label></li>
-                    <li><input type="password" id="password"></li>
-                    <li class="nav-header"><label for="password"></label></li>
-                    <li style="text-align:right"><input type="submit" id="submit_signin" value="Signin" class="btn"></form></li>
-                    <li class="divider"></li>
+                    <li><input type="password" id="password" name="password"></li>
+                    <li class="nav-header"><label for=""></label></li>
+                    <li style="text-align:right"><input type="submit" id="submit_signin" value="Signin" class="btn"></li>
+                    <li class="divider">
+                    	<input type="hidden" name="return" value="<?php echo base64_encode(current_url());?>">
+                    	</form>
+                    </li>
                   </ul>
                 </li>
+                <?php } else { ?>
+                <li style=" float:right">
+                	<a href="<?php echo base_url();?>index.php/auth/logout"><strong>Hi <?php echo $user->username;?> </strong> &middot; Logout</a>
+                </li>
+				<?php } ?>                
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
@@ -102,7 +113,7 @@
         <div class="span4">
           <h2>Costumise your own</h2>
           <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-          <p><a class="btn" href="#">Start &raquo;</a></p>
+          <p><a class="btn" href="<?php echo base_url();?>index.php/custom">Start &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <h2>Choose from template gallery</h2>

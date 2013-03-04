@@ -1,12 +1,4 @@
 <?php
-//session_start();
-//if(!isset($_SESSION['template']))
-//$_SESSION['template'] = 'YmFzaWMvM2NvbEJvb3Q=';
-
-
-//include('canvas.php');
-
-
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -173,6 +165,9 @@ if (defined('ENVIRONMENT'))
 	// this global constant is deprecated.
 	define('EXT', '.php');
 
+	define('ABSPATH',realpath(dirname(__FILE__)));
+	
+	define('DS', DIRECTORY_SEPARATOR);
 	// Path to the system folder
 	define('BASEPATH', str_replace("\\", "/", $system_path));
 

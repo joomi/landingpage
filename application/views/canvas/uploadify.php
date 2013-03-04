@@ -5,7 +5,7 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 
-include('class.upload.php');
+include(ABSPATH . DS .'includes' . DS . 'lib' . DS . 'class.upload.php');
 
 if (!empty($_FILES)) {
 	$width = $_POST['width'];
@@ -27,7 +27,7 @@ if (!empty($_FILES)) {
 //	  }
       $handle->process(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder. DS . 'images');
       if ($handle->processed) {
-      //    echo 'http://127.0.0.1/landingpage/landingpage.git/includes/lib/uploads/'.$handle->file_dst_name ;
+          echo base_url().'/uploads/users/'.$folder.'/images/'.$handle->file_dst_name ;
           $handle->clean();
       } else {
           echo 'error : ' . $handle->error;

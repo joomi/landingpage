@@ -1,3 +1,7 @@
+<?php 
+$user = $this->ion_auth->user()->row();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +16,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>js/library.js"></script>    
     <script src="<?php echo base_url();?>js/script.js"></script>
-
+    <script>
+	var base_url = '<?php echo base_url();?>';
+	</script>
   </head>
 
   <body>
@@ -32,19 +38,27 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                <?php if (!$this->ion_auth->logged_in()){?>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdownxx">Signin <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle">Signin <b class="caret"></b></a>				  
                   <ul class="dropdown-menu lp_signin">
-                    <li class="nav-header"><form action="#" method="post" id="signin"><label for="user_name">User Name</label></li>
-                    <li><input type="text" id="user_name"></li>
+                    <li class="nav-header"><form action="<?php echo base_url();?>index.php/auth/login" method="post" accept-charset="utf-8"><label for="user_name">User Name</label></li>
+                    <li><input type="text" id="identity" name="identity"></li>
                     <li class="nav-header"><label for="password">Password</label></li>
-                    <li><input type="password" id="password"></li>
-                    <li class="nav-header"><label for="password"></label></li>
-                    <li style="text-align:right"><input type="submit" id="submit_signin" value="Signin" class="btn"></form></li>
-                    <li class="divider"></li>
+                    <li><input type="password" id="password" name="password"></li>
+                    <li class="nav-header"><label for=""></label></li>
+                    <li style="text-align:right"><input type="submit" id="submit_signin" value="Signin" class="btn"></li>
+                    <li class="divider">
+                    	<input type="hidden" name="return" value="<?php echo base64_encode(current_url());?>">
+                    	</form>
+                    </li>
                   </ul>
                 </li>
+                <?php } else { ?>
+                <li style=" float:right">
+                	<a href="<?php echo base_url();?>index.php/auth/logout"><strong>Hi <?php echo $user->username;?> </strong> &middot; Logout</a>
+                </li>
+				<?php } ?>                
               </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -64,8 +78,12 @@
               </a>
               <h4>Starter template</h4>
               <p>A barebones HTML document with all the Bootstrap CSS and JavaScript included.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="<?php echo base_url();?>index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <?php if ($this->ion_auth->logged_in()){?>
+              <a class="btn btn-success" href="<?php echo base_url();?>index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
+              <?php } else { ?>
+              <button class="btn btn-success regFirst" type="button" data-return="<?php echo base_url();?>index.php/canvas?t=YmFzaWMvM2NvbA==">start ></button>
+              <?php } ?>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/hero.html">
@@ -73,8 +91,8 @@
               </a>
               <h4>Basic marketing site</h4>
               <p>Featuring a hero unit for a primary message and three supporting elements.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/fluid.html">
@@ -82,8 +100,8 @@
               </a>
               <h4>Fluid layout</h4>
               <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
 
             <li class="span3">
@@ -92,8 +110,8 @@
               </a>
               <h4>Narrow marketing</h4>
               <p>Slim, lightweight marketing template for small projects or teams.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/justified-nav.html">
@@ -101,8 +119,8 @@
               </a>
               <h4>Justified nav</h4>
               <p>Marketing page with equal-width navigation links in a modified navbar.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/signin.html">
@@ -110,8 +128,8 @@
               </a>
               <h4>Sign in</h4>
               <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
 
             <li class="span3">
@@ -120,8 +138,8 @@
               </a>
               <h4>Sticky footer</h4>
               <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/carousel.html">
@@ -129,8 +147,8 @@
               </a>
               <h4>Carousel jumbotron</h4>
               <p>A more interactive riff on the basic marketing site featuring a prominent carousel.</p>
-              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php" data-target="#myModal">Preview</a>
-              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php">start ></a>
+              <a class="btn btn-info" data-toggle="modal" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==" data-target="#myModal">Preview</a>
+              <a class="btn btn-success" href="http://127.0.0.1/landingpage/landingpage.git/index.php/canvas?t=YmFzaWMvM2NvbA==">start ></a>
             </li>
           </ul>
         </section>
@@ -150,6 +168,54 @@
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
-    </div>    
+    </div>  
+	<?php if (!$this->ion_auth->logged_in()){?>
+    <div id="regModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel" style="cursor:default">Please Register first</h3>
+        </div>
+        <div class="modal-body">
+            <div class="alert ajaxMessage" style="display:none;"></div>
+        	<form accept-charset="utf-8" class="form-horizontal" id="join">    
+              <div class="control-group">
+                <label class="control-label" for="full_name">Full Name</label>
+                <div class="controls">
+                	<input type="text" name="full_name" value="" id="full_name">                
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                	<input type="text" name="email" required class="" value="" id="email">                
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                	<input type="password" name="password"  value="" id="regpassword">                
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="password_confirm">Confirm Password</label>
+                <div class="controls">
+                	<input type="password" name="password_confirm"   value="" id="password_confirm">                
+                </div>
+              </div>
+              <div class="control-group">
+              <div class="controls">
+                <input type="hidden" name="return" id="return" value="">
+                <button type="submit" id="submitBtn" class="btn">Submit</button>
+                <img src="<?php echo base_url();?>images/loader.gif" class="loadingAjax" style="display:none; margin:2px 0 0 7px">
+              </div>
+          </div>
+    
+		</form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>  
+    <?php } ?>
   </body>
 </html>

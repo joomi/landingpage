@@ -86,12 +86,12 @@ $('#cp3').colorpicker().on('changeColor', function(ev){
 	$('.lp_focusin').css('color', ev.color.toHex());
 });
 $('#upload_img').uploadify({
-    'swf'      : 'images/uploadify.swf',
-	'uploader' : 'includes/lib/uploadify.php',
+    'swf'      : base_url+'images/uploadify.swf',
+	'uploader' : base_url+'index.php/file',
 	'fileObjName' : 'image_field',
 	'width'    : '160',
 	'height'    : '26',
-    'formData' : {'width' : '<?php echo $_GET['width']; ?>', 'reflection' : 1},	
+    'formData' : {'width' : '<?php echo $_GET['width']; ?>', 'reflection' : 1, 'folder': folder},	
 	'preventCaching' : false,
 	'buttonText' : 'Select a new image...',
 	'fileSizeLimit' : '2MB',

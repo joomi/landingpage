@@ -344,6 +344,7 @@ body {
 	Licensed under the Apache License v2.0
 	http://www.apache.org/licenses/LICENSE-2.0
 */
+.colorpicker.dropdown-menu{ width:140px !important; min-width:0 !important}
 .colorpicker-saturation { width: 100px; height: 100px; background-image: url(../images/saturation.png); cursor: crosshair; float: left; }
  .colorpicker-saturation i { display: block; height: 5px; width: 5px; border: 1px solid #000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; position: absolute; top: 0; left: 0; margin: -4px 0 0 -4px; }
  .colorpicker-saturation i b { display: block; height: 5px; width: 5px; border: 1px solid #fff; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
@@ -1688,6 +1689,9 @@ legend+.control-group {
 	margin-left: 180px;
 *margin-left:0
 }
+#join label{ width:131px;}
+#join label.error{ width:100%; font-size:12px; color:red; margin-bottom:-14px;}
+#join .controls{ margin-left:138px;}
 .form-horizontal .controls:first-child {
 *padding-left:180px
 }
