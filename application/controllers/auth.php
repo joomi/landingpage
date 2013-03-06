@@ -487,6 +487,9 @@ class Auth extends CI_Controller {
 				$folder = base64_encode($email);
 				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder, 0755);
 				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder. DS . 'images', 0755);
+				$id = $this->db->insert_id();
+				$sql = "UPDATE users SET folder = '$folder' WHERE id = $id "; 
+				$this->db->query($sql);
 			}
 		}
 		else

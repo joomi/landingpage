@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
 			$(this).css('opacity', 1);
 		}
 	});
-	
 //	$().enableUndo({ redoCtrlChar : 'y', redoShiftReq : false });
     $("*[data-role='lp_element']").each(function(){
 		if($(this).is("img"))
@@ -61,7 +60,7 @@ jQuery(document).ready(function($) {
 		$(this).parent().attr('contenteditable', 'true');
 		var linkx = $(this).attr('href');
 		$.ajax({
-			url:base_url+'includes/lp_editor_panels/link.tpl.php?link='+linkx,
+			url:base_url +'includes/lp_editor_panels/link.tpl.php?link='+linkx,
 			success: function(data){
 				$('#lp_controls').append(data);
 			}

@@ -45,6 +45,7 @@ $user = $this->ion_auth->user()->row();
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" id="lp_save">save</a></li>
                 <?php if (!$this->ion_auth->logged_in()){?>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle">Signin <b class="caret"></b></a>				  
