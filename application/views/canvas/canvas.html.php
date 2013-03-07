@@ -25,6 +25,8 @@ $user = $this->ion_auth->user()->row();
     <script>
 	var base_url = '<?php echo base_url();?>';
 	var folder   = '<?php echo base64_encode($user->email);?>';
+	var tmp   = '<?php echo $_GET['t'];?>';
+	var user   = '<?php echo $user->id;?>';
 	</script>
     <?php include($head);?>
 </head>
@@ -45,7 +47,7 @@ $user = $this->ion_auth->user()->row();
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" id="lp_save">save</a></li>
+                <li><a id="lp_save">save</a></li>
                 <?php if (!$this->ion_auth->logged_in()){?>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle">Signin <b class="caret"></b></a>				  

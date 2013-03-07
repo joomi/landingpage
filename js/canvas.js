@@ -168,9 +168,34 @@ jQuery(document).ready(function($) {
 		$(this).next().toggle();
 	});
 	
-	
+	//save the page to DB
+	$("#lp_save").click( function(event){
+		event.preventDefault();
+		var data = $.base64.encode(encodeURI($('.lp_canvas').html()));
+		var id = getVar('id');
+		$.ajax({
+			url:base_url+'index.php/save',
+			data:'h='+data+'&id='+id+'&t='+tmp,
+			type:'POST',
+			success: function(data){
+				if(data != 'n')
+				window.location.href = document.URL + '&id='+data
+			}
+		});
+	});
 });
 
+function getVar(variable)
+{
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i=0;i<vars.length;i++) {
+		var pair = vars[i].split("=");
+		if(pair[0] == variable)
+		{return pair[1];}
+	}
+	return 0;
+}
 function removeBlock($this) {
 	if(edit('status') == 'off'){
 		var doit = confirm('Are you sure you would like to remove this block');

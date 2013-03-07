@@ -475,7 +475,7 @@ class Auth extends CI_Controller {
 			$email    = $this->input->post('email');
 			$password = $this->input->post('password');
 		}
-		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email))
+		if ($this->form_validation->run() == true && $id = $this->ion_auth->register($username, $password, $email))
 		{
 			//login
 			if (!$this->ion_auth->login($email, $password))
@@ -487,7 +487,6 @@ class Auth extends CI_Controller {
 				$folder = base64_encode($email);
 				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder, 0755);
 				mkdir(ABSPATH . DS .'uploads' . DS .'users' . DS .$folder. DS . 'images', 0755);
-				$id = $this->db->insert_id();
 				$sql = "UPDATE users SET folder = '$folder' WHERE id = $id "; 
 				$this->db->query($sql);
 			}
