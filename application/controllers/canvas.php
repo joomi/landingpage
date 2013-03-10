@@ -4,10 +4,16 @@ class Canvas extends CI_Controller {
 
 	public function index()
 	{
-		if(!$this->ion_auth->logged_in())
-		redirect('auth/login', 'refresh');
-		else
-		$this->load->view('canvas/canvas.html.php');
+		$data['query']  = '';
+		$data['state']  = 0;
+		if(!$this->ion_auth->logged_in()){
+			redirect('auth/login', 'refresh');
+		} else {
+			$this->load->model('Canvas_model');
+			$data['query'] = $this->Canvas_model->get_data();
+			if($data['query']) $data['state'] = 1;
+			$this->load->view('canvas/canvas.html.php', $data);
+		}
 	}
 }
 

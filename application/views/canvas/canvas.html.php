@@ -1,13 +1,16 @@
 <?php
+//print_r($query);
 //echo base64_encode('basic/3col');
-if(isset($_GET['t'])){
-$head = ABSPATH.'/application/views/templates/'.base64_decode($_GET['t']).'/head.php';
-$body = ABSPATH.'/application/views/templates/'.base64_decode($_GET['t']).'/body.php';
+$user = $this->ion_auth->user()->row();
+if(isset($_GET['t']) && !isset($_GET['id'])){
+	$head = ABSPATH.'/application/views/templates/'.base64_decode($_GET['t']).'/head.php';
+	$body = ABSPATH.'/application/views/templates/'.base64_decode($_GET['t']).'/body.php';
+} elseif(isset($_GET['id']) && $query){
+	$head = ABSPATH.'/application/views/templates/'.base64_decode($query[0]->template).'/head.php';
+	$body = $query[0]->data;
 } else {
 	die('The template is not accessable');	
 }
-$user = $this->ion_auth->user()->row();
-
 ?>
 <!doctype html>
 <html class="no-js" lang="en"> 
@@ -25,7 +28,7 @@ $user = $this->ion_auth->user()->row();
     <script>
 	var base_url = '<?php echo base_url();?>';
 	var folder   = '<?php echo base64_encode($user->email);?>';
-	var tmp   = '<?php echo $_GET['t'];?>';
+	var tmp   = '<?php echo ($state == 0 && isset($_GET['t']))?$_GET['t']:$query[0]->template;?>';
 	var user   = '<?php echo $user->id;?>';
 	</script>
     <?php include($head);?>
@@ -75,7 +78,7 @@ $user = $this->ion_auth->user()->row();
       </div>
     </div>
     <div role="canvas" class="lp_canvas">
-		<?php include($body);?>
+		<?php $body = ($state == 1) ? urldecode(base64_decode($body)):file_get_contents($body);echo $body;?>
     </div>
     <div id="myModal" class="modal hide fade" role="dialog" data-state="off" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">

@@ -179,7 +179,7 @@ jQuery(document).ready(function($) {
 			type:'POST',
 			success: function(data){
 				if(data != 'n')
-				window.location.href = document.URL + '&id='+data
+				window.location.href = 'canvas?id='+data
 			}
 		});
 	});
