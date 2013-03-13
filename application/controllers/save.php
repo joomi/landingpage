@@ -26,7 +26,7 @@ class Save extends CI_Controller {
 		$head = str_replace('<?php echo base_url();?>', base_url(), $head);
 		$body = urldecode(base64_decode($html));
 		$dir = ABSPATH . '/lp/' . $user->id;
-		mkdir($dir, 0755);		
+		if(!is_dir($dir)) mkdir($dir, 0755);		
 		$file = $dir.'/page_'.$page_id.'.html';
 		$fh = fopen($file, 'w') or die("can't open file");
 		$html = '<!doctype html>
