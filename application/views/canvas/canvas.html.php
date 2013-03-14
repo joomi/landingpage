@@ -63,7 +63,7 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
                     <a href="#" >Edit <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">General</li>
-                        <li><a href="#">General settings</a></li>
+                        <li><a id="lp_general" href="#">General settings</a></li>
                         <li><a href="#">Analytics Snippets</a></li>
                         <?php if($id){?>
                         <li><a target="_blank" href="<?php echo base_url();?>lp/<?php echo $user->id?>/page_<?php echo $id?>.html">Live Preview</a></li>
@@ -90,7 +90,15 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
       </div>
     </div>
     <div role="canvas" class="lp_canvas">
-		<?php $body = ($state == 1) ? urldecode(base64_decode($body)):file_get_contents($body);echo $body;?>
+    	<?php //clean up
+			  	$clean_body = urldecode(base64_decode($body));
+				$clean_body = str_replace('&lt;?php', "", $clean_body);
+				$clean_body = str_replace('&lt;script', "", $clean_body);
+				$clean_body = str_replace('&lt;embed', "", $clean_body);
+				$clean_body = str_replace('&lt;object', "", $clean_body);			  
+		      	$body = ($state == 1) ? $clean_body : file_get_contents($body);
+				echo $body;
+		?>
     </div>
     <div id="myModal" class="modal hide fade" role="dialog" data-state="off" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">

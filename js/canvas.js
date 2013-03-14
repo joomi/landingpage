@@ -134,6 +134,19 @@ jQuery(document).ready(function($) {
 			}
 		});
 	});
+
+	$("#lp_general").click(function(){
+		if(edit('status') == 'on') return false;
+		edit('on');
+		var title = $('title').text();
+
+		$.ajax({
+			url:base_url+'includes/lp_editor_panels/general.tpl.php?title=' + title,
+			success: function(data){
+				$('#lp_controls').append(data);
+			}
+		});
+	});
 	
     $("#closePanel").click(function(){
 		edit('off');
