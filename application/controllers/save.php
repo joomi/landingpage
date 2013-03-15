@@ -7,15 +7,24 @@ class Save extends CI_Controller {
 		if (!$this->ion_auth->logged_in()) die('No direct access');
 		$page_id = (isset($_POST['id']) && (int)$_POST['id'] > 0)?$_POST['id']:NULL;
 		$html = $_POST['h'];
+		$title = $_POST['title'];
+		$clean_HTML = urldecode(base64_decode($html));
+		$clean_HTML = str_replace('&lt;?php', "", $clean_HTML);
+		$clean_HTML = str_replace('?&gt;', "", $clean_HTML);
+		$clean_HTML = str_replace('&lt;script', "", $clean_HTML);
+		$clean_HTML = str_replace('&lt;embed', "", $clean_HTML);
+		$clean_HTML = str_replace('&lt;object', "", $clean_HTML);			  
+		$html = base64_encode(urlencode($clean_HTML));
+
 		$template = $_POST['t'];
 		$user = $this->ion_auth->user()->row();
 		$user_id = $user->id;
 		if($page_id){
-			$sql = "UPDATE page SET `last_update` = NOW(), `data` = '$html' WHERE `user_id` = $user_id AND `id` = $page_id AND `template` = '$template'"; 
+			$sql = "UPDATE page SET `last_update` = NOW(), `data` = '$html' , `title` = '$title' WHERE `user_id` = $user_id AND `id` = $page_id AND `template` = '$template'"; 
 			$this->db->query($sql);
 			echo 'n';
 		} else {
-			$sql = "INSERT INTO page (`user_id`, `create_date`, `last_update`, `data`, `template`) VALUES ($user_id, NOW(), NOW(), '$html', '$template') "; 
+			$sql = "INSERT INTO page (`title`, `user_id`, `create_date`, `last_update`, `data`, `template`) VALUES ('$title', $user_id, NOW(), NOW(), '$html', '$template') "; 
 			$this->db->query($sql);
 			$page_id = $this->db->insert_id();
 			echo $page_id;
@@ -38,7 +47,10 @@ class Save extends CI_Controller {
 					<meta name="description" content="">
 					<meta name="viewport" content="width=device-width">';
 		$html .= $head;
-		$html .= '</head><body>'.$body.'</body></html>';
+		$html .= '</head><body>'.$body;
+		//pixel - hit counter
+		$html .= '<img src="'.base_url().'index.php/pixel?p='.$page_id.'" width="1" height="1" />';
+		$html .= '</body></html>';
 		fwrite($fh, $html);
 		fclose($fh);		
 	}

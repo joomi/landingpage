@@ -45,7 +45,7 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Project name</a>
+            <a class="brand" href="#">PagenX</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
@@ -64,7 +64,6 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
                     <ul class="dropdown-menu">
                         <li class="nav-header">General</li>
                         <li><a id="lp_general" href="#">General settings</a></li>
-                        <li><a href="#">Analytics Snippets</a></li>
                         <?php if($id){?>
                         <li><a target="_blank" href="<?php echo base_url();?>lp/<?php echo $user->id?>/page_<?php echo $id?>.html">Live Preview</a></li>
                         <?php } else { ?>
@@ -73,7 +72,7 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
                         <li class="divider"></li>
                         <li class="nav-header">More actions</li>
                         <?php if($id){?>
-                        <li><a id="lp_delete" href="<?php echo base_url();?>">Delete this page</a></li>
+                        <li><a id="lp_delete" href="#">Delete this page</a></li>
                         <?php } else { ?>
                         <li><span>Delete this page</span></li>
                         <?php } ?>

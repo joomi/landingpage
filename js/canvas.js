@@ -187,9 +187,10 @@ jQuery(document).ready(function($) {
 		$('#lp_overlay').show();
 		var data = $.base64.encode(encodeURI($('.lp_canvas').html()));
 		var id = getVar('id');
+		var title = $('title').text();
 		$.ajax({
 			url:base_url+'index.php/save',
-			data:'h='+data+'&id='+id+'&t='+tmp,
+			data:'h='+data+'&id='+id+'&t='+tmp+'&title='+title,
 			type:'POST',
 			success: function(data){
 				if(data != 'n')
@@ -197,6 +198,24 @@ jQuery(document).ready(function($) {
 				$('#lp_overlay').hide();
 			}
 		});
+	});
+
+	//save the page to DB
+	$("#lp_delete").click( function(event){
+		event.preventDefault();
+		var con = confirm('Are you sure you would like to delete this page?');
+		if(con){
+			$('#lp_overlay').show();
+			var id = getVar('id');
+			$.ajax({
+				url:base_url+'index.php/delete',
+				data:'id='+id,
+				type:'POST',
+				success: function(data){
+					window.location.href = base_url;
+				}
+			});
+		}
 	});
 });
 

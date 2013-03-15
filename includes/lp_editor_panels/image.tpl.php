@@ -97,8 +97,12 @@ $('#upload_img').uploadify({
 	'fileSizeLimit' : '2MB',
 	'fileTypeDesc' : 'Image Files',
 	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+	'onUploadStart' : function(file) {
+		$('#lp_overlay').show();
+	},
 	'onUploadSuccess' : function(file, data, response) {
 		$('#<?php echo $_GET['id']; ?>').attr('src', data);
+		$('#lp_overlay').hide();
 	}
 	
 });
