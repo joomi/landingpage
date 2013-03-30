@@ -1,0 +1,81 @@
+/*
+|--------------------------------------------------------------------------
+| UItoTop jQuery Plugin 1.2
+| http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
+|--------------------------------------------------------------------------
+*/
+#toTop {
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	z-index: 10;
+	bottom:80px;
+	right:20px;
+	cursor: pointer;
+	overflow:hidden;
+	width:40px;
+	height:60px;
+	border:none;
+	-webkit-transition: 200ms linear all;
+	   -moz-transition: 200ms linear all;
+	    -ms-transition: 200ms linear all;
+	     -o-transition: 200ms linear all;
+	        transition: 200ms linear all;
+}
+
+#toTop a {
+	display: block;
+	text-decoration:none;
+	width:40px;
+	height:40px;
+	border:none;
+	background-position: center center;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-transition: 200ms linear all;
+	   -moz-transition: 200ms linear all;
+	    -ms-transition: 200ms linear all;
+	     -o-transition: 200ms linear all;
+	        transition: 200ms linear all;
+}
+
+#toTop:hover a {
+	-webkit-transition: 200ms linear all;
+	   -moz-transition: 200ms linear all;
+	    -ms-transition: 200ms linear all;
+	     -o-transition: 200ms linear all;
+	        transition: 200ms linear all;
+}
+
+#toTopHover {
+	width: 40px;
+	height: 40px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+	outline:none;
+}
+
+#toTop div {
+	font-family: 'NexaFreeBoldwebfont', Arial, Helvetica, sans-serif;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	display: block;
+	width: 100%;
+	text-indent: 0;
+	line-height: 12px;
+	z-index: 11;
+	-webkit-transition: 200ms linear all;
+	   -moz-transition: 200ms linear all;
+	    -ms-transition: 200ms linear all;
+	     -o-transition: 200ms linear all;
+	        transition: 200ms linear all;
+}

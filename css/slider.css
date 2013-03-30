@@ -1,0 +1,591 @@
+.sapphire-slider {
+	background-image: url('../images/slider_noise.png');
+	width: 100%;
+	min-width: 400px;
+	top:59px;
+	height: 441px;
+	position: relative;
+	z-index:2;
+	margin: 0px auto;
+	overflow: hidden;
+	-webkit-transition: background-position 1s ease-out 0.3s;
+	-moz-transition: background-position 1s ease-out 0.3s;
+	-o-transition: background-position 1s ease-out 0.3s;
+	-ms-transition: background-position 1s ease-out 0.3s;
+	transition: background-position 1s ease-out 0.3s;
+}
+
+.sapphire-slide {
+	position: absolute;
+	width: 960px;
+	margin-left: -480px;
+	height: 100%;
+	top: 0px;
+	left: 50%;
+	z-index:4;
+}
+
+.lte8 .sapphire-slide, .lte9 .sapphire-slide {
+	left: 200%;
+}
+
+.sapphire-slide-current {
+	z-index: 1000;
+}
+
+.sapphire-slider-fb  .sapphire-slide.sapphire-slide-current {
+	left: 0px;
+}
+
+.sapphire-slide h2,
+.sapphire-slide p,
+.sapphire-slide .sapphire-link,
+.sapphire-slide .sapphire-img {
+	position: absolute;
+	opacity: 0;
+}
+.sapphire-slide .sapphire-img img{
+	/*max-height:370px;*/
+}
+.sapphire-slider-fb .sapphire-slide h2,
+.sapphire-slider-fb .sapphire-slide p,
+.sapphire-slider-fb .sapphire-slide .sapphire-link {
+	opacity: 0;
+}
+
+.sapphire-slider-fb .sapphire-slide .sapphire-img {
+	opacity: 0;
+}
+
+.lte9 .sapphire-slide h2,
+.lte9 .sapphire-slide p,
+.lte9 .sapphire-slide .sapphire-link,
+.lte9 .sapphire-slide .sapphire-img, 
+.lte9 .sapphire-slider-fb .sapphire-slide h2,
+.lte9 .sapphire-slider-fb .sapphire-slide p,
+.lte9 .sapphire-slider-fb .sapphire-slide .sapphire-link, 
+.lte9 .sapphire-slider-fb .sapphire-slide .sapphire-img {
+	opacity: 1;
+}
+
+.lte8 .sapphire-slide h2,
+.lte8 .sapphire-slide p,
+.lte8 .sapphire-slide .sapphire-link,
+.lte8 .sapphire-slide .sapphire-img, 
+.lte8 .sapphire-slider-fb .sapphire-slide h2,
+.lte8 .sapphire-slider-fb .sapphire-slide p,
+.lte8 .sapphire-slider-fb .sapphire-slide .sapphire-link, 
+.lte8 .sapphire-slider-fb .sapphire-slide .sapphire-img {
+	opacity: 1;
+}
+
+.sapphire-slide h2 {
+	font-size: 62px;
+	font-weight: normal;
+	width: 100%;
+	font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+	color: #FFF;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.sapphire-slide p {
+	font-size: 22px;
+	font-weight: normal;
+	font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+	color: #FFF;
+	width: 450px;
+	line-height: 23px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.sapphire-slide .sapphire-link {
+	font-size: 22px;
+	font-weight: normal;
+	font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+	padding: 15px;
+	letter-spacing: 1px;
+	display: table;
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 6px;
+	-webkit-transition: background-color .25s ease-in;
+	   -moz-transition: background-color .25s ease-in;
+	    -ms-transition: background-color .25s ease-in;
+	     -o-transition: background-color .25s ease-in;
+	        transition: background-color .25s ease-in;
+}
+
+.sapphire-slide .sapphire-link:active {
+	-webkit-box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.2);
+	-webkit-transition: 100ms linear all;
+	   -moz-transition: 100ms linear all;
+	    -ms-transition: 100ms linear all;
+	     -o-transition: 100ms linear all;
+	        transition: 100ms linear all;
+}
+
+.sapphire-dots {
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	left: 0px;
+	bottom: 25px;
+	z-index: 2000;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.sapphire-dots span {
+	display: inline-block;
+	position: relative;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	background: #FFF;
+	margin-right: 26px;
+	cursor: pointer;
+	opacity: .5;
+}
+
+.sapphire-dots span:last-child {
+	margin-right: 0px;
+}
+
+.sapphire-dots span:hover, .sapphire-dots span:active, .sapphire-dots span.sapphire-dots-current {
+	opacity: 1;
+}
+
+.sapphire-arrows {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.sapphire-arrows span{
+	position: absolute;
+	top: 31%;
+	margin-top: -40px;
+	cursor: pointer;
+	z-index: 2000;
+	opacity: 0;
+	-webkit-transition: 300ms linear all;
+	-moz-transition: 300ms linear all;
+	-o-transition: 300ms linear all;
+	-ms-transition: 300ms linear all;
+	transition: 300ms linear all;
+}
+
+.sapphire-slider:hover .sapphire-arrows span {
+	opacity: .7;
+}
+
+.sapphire-slider:hover .sapphire-arrows span:hover, .sapphire-slider:hover span:active {
+	opacity: 1;
+}
+
+.sapphire-slider:hover span.sapphire-arrows-prev:active {
+	left: -5px;
+}
+
+.sapphire-slider:hover span.sapphire-arrows-next:active {
+	right: -5px;
+}
+
+.sapphire-arrows span.sapphire-arrows-prev {
+	left: 0;
+	width: 40px;
+	height: 80px;
+}
+
+.sapphire-arrows span.sapphire-arrows-next {
+	right: 0;
+	width: 40px;
+	height: 80px;
+}
+
+.sapphire-slide-current h2,
+.sapphire-slide-current p,
+.sapphire-slide-current .sapphire-link {
+	opacity: 1;
+}
+.sapphire-slide-current .sapphire-img {
+	opacity: 1;
+}
+
+/* Animation classes and animations */
+
+/* Slide in from the right */
+
+.sapphire-slide-fromright h2 {
+	-webkit-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+}
+.sapphire-slide-fromright p {
+	-webkit-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+}
+.sapphire-slide-fromright .sapphire-link {
+	-webkit-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromRightAnim1 0.6s ease-in-out 0.6s both;
+}
+.sapphire-slide-fromright .sapphire-img {
+	-webkit-animation: fromRightAnim2 0.2s ease-in-out 0.6s both;
+	-moz-animation: fromRightAnim2 0.2s ease-in-out 0.6s both;
+	-o-animation: fromRightAnim2 0.2s ease-in-out 0.6s both;
+	-ms-animation: fromRightAnim2 0.2s ease-in-out 0.6s both;
+	animation: fromRightAnim2 0.2s ease-in-out 0.6s both;
+}
+
+@-webkit-keyframes fromRightAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-webkit-keyframes fromRightAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-moz-keyframes fromRightAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-moz-keyframes fromRightAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-o-keyframes fromRightAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-o-keyframes fromRightAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-ms-keyframes fromRightAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-ms-keyframes fromRightAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@keyframes fromRightAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@keyframes fromRightAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+/* Slide in from the left*/
+
+.sapphire-slide-fromleft h2 {
+	-webkit-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+}
+
+.sapphire-slide-fromleft p {
+	-webkit-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+}
+
+.sapphire-slide-fromleft .sapphire-link {
+	-webkit-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-o-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+	animation: fromLeftAnim1 0.6s ease-in-out 0.6s both;
+}
+
+.sapphire-slide-fromleft .sapphire-img {
+	-webkit-animation: fromLeftAnim2 0.6s ease-in-out 0.6s both;
+	-moz-animation: fromLeftAnim2 0.6s ease-in-out 0.6s both;
+	-o-animation: fromLeftAnim2 0.6s ease-in-out 0.6s both;
+	-ms-animation: fromLeftAnim2 0.6s ease-in-out 0.6s both;
+	animation: fromLeftAnim2 0.6s ease-in-out 0.6s both;
+}
+
+@-webkit-keyframes fromLeftAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-webkit-keyframes fromLeftAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-moz-keyframes fromLeftAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-moz-keyframes fromLeftAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-o-keyframes fromLeftAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-o-keyframes fromLeftAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@-ms-keyframes fromLeftAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@-ms-keyframes fromLeftAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+@keyframes fromLeftAnim1 {
+	0%{ left: 1000px; opacity: 0; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 480px; opacity: 1; }
+}
+
+@keyframes fromLeftAnim2 {
+	0%{ left: -500px; opacity: 0; }
+	30%{ left: 20px; opacity: 0.3; }
+	100%{ left: 0px; opacity: 1; }
+}
+
+/* Slide out to the right */
+
+.sapphire-slide-toright h2 {
+	-webkit-animation: toRightAnim1 0.6s ease-in-out both;
+	-moz-animation: toRightAnim1 0.6s ease-in-out both;
+	-o-animation: toRightAnim1 0.6s ease-in-out both;
+	-ms-animation: toRightAnim1 0.6s ease-in-out both;
+	animation: toRightAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toright p {
+	-webkit-animation: toRightAnim1 0.6s ease-in-out both;
+	-moz-animation: toRightAnim1 0.6s ease-in-out both;
+	-o-animation: toRightAnim1 0.6s ease-in-out both;
+	-ms-animation: toRightAnim1 0.6s ease-in-out both;
+	animation: toRightAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toright .sapphire-link {
+	-webkit-animation: toRightAnim1 0.6s ease-in-out both;
+	-moz-animation: toRightAnim1 0.6s ease-in-out both;
+	-o-animation: toRightAnim1 0.6s ease-in-out both;
+	-ms-animation: toRightAnim1 0.6s ease-in-out both;
+	animation: toRightAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toright .sapphire-img {
+	-webkit-animation: toRightAnim2 0.6s ease-in-out both;
+	-moz-animation: toRightAnim2 0.6s ease-in-out both;
+	-o-animation: toRightAnim2 0.6s ease-in-out both;
+	-ms-animation: toRightAnim2 0.6s ease-in-out both;
+	animation: toRightAnim2 0.6s ease-in-out both;
+}
+
+@-webkit-keyframes toRightAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-webkit-keyframes toRightAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-moz-keyframes toRightAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-moz-keyframes toRightAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-o-keyframes toRightAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-o-keyframes toRightAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-ms-keyframes toRightAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-ms-keyframes toRightAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@keyframes toRightAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px; opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@keyframes toRightAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+/* Slide out to the left*/
+
+.sapphire-slide-toleft h2 {
+	-webkit-animation: toLeftAnim1 0.6s ease-in-out both;
+	-moz-animation: toLeftAnim1 0.6s ease-in-out both;
+	-o-animation: toLeftAnim1 0.6s ease-in-out both;
+	-ms-animation: toLeftAnim1 0.6s ease-in-out both;
+	animation: toLeftAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toleft p {
+	-webkit-animation: toLeftAnim1 0.6s ease-in-out both;
+	-moz-animation: toLeftAnim1 0.6s ease-in-out both;
+	-o-animation: toLeftAnim1 0.6s ease-in-out both;
+	-ms-animation: toLeftAnim1 0.6s ease-in-out both;
+	animation: toLeftAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toleft .sapphire-link {
+	-webkit-animation: toLeftAnim1 0.6s ease-in-out both;
+	-moz-animation: toLeftAnim1 0.6s ease-in-out both;
+	-o-animation: toLeftAnim1 0.6s ease-in-out both;
+	-ms-animation: toLeftAnim1 0.6s ease-in-out both;
+	animation: toLeftAnim1 0.6s ease-in-out both;
+}
+
+.sapphire-slide-toleft .sapphire-img {
+	-webkit-animation: toLeftAnim2 0.6s ease-in-out both;
+	-moz-animation: toLeftAnim2 0.6s ease-in-out both;
+	-o-animation: toLeftAnim2 0.6s ease-in-out both;
+	-ms-animation: toLeftAnim2 0.6s ease-in-out both;
+	animation: toLeftAnim2 0.6s ease-in-out both;
+}
+
+@-webkit-keyframes toLeftAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px;  opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-webkit-keyframes toLeftAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-moz-keyframes toLeftAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px;  opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-moz-keyframes toLeftAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-o-keyframes toLeftAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px;  opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-o-keyframes toLeftAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@-ms-keyframes toLeftAnim1{
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px;  opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@-ms-keyframes toLeftAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}
+
+@keyframes toLeftAnim1 {
+	0%{ left: 480px;  opacity: 1; }
+	30%{ left: 460px;  opacity: 0.3; }
+	100%{ left: 1000px; opacity: 0; }
+}
+
+@keyframes toLeftAnim2 {
+	0%{ left: 0px;  opacity: 1; }
+	30%{ left: 20px;  opacity: 0.3; }
+	100%{ left: -500px; opacity: 0; }
+}

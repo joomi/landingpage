@@ -184,6 +184,8 @@ jQuery(document).ready(function($) {
 	//save the page to DB
 	$("#lp_save").click( function(event){
 		event.preventDefault();
+		tch = 0;
+		console.log(tch);
 		$('#lp_overlay').show();
 		var data = $.base64.encode(encodeURI($('.lp_canvas').html()));
 		var id = getVar('id');
@@ -217,7 +219,16 @@ jQuery(document).ready(function($) {
 			});
 		}
 	});
+	
 });
+
+var tch = 0;
+
+	window.onbeforeunload = function(e){
+		if(tch == 1){
+			return 'It looks like you have been editing something \nif you leave before saving, your changes will be lost.';
+		}
+	}
 
 function getVar(variable)
 {
@@ -257,6 +268,8 @@ function edit(state){
 			$( ".lp_main" ).sortable( "enable" );
 			break;	
 		case 'on':
+			tch = 1;
+			console.log(tch);
 			$('#myModal').attr('data-state', 'on').modal({'backdrop':false});
 			$(".lp_canvas").toggleClass( "editing" );
 			$(".lp_main").sortable( "disable" );

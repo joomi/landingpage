@@ -1,0 +1,69 @@
+
+.lte8 header #top.noise {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.lte8 section #features .icon {
+    display: none;
+}
+
+.lte8 section #more_features div.row ul li {
+    margin-right: 7px;
+}
+
+.lte8 section #pricelist div.row .price_list .column {
+    margin-right: 15px;
+}
+
+.lte8 section #gallery div.row .load_more {
+    position:relative;
+}
+
+.lte8 section #gallery .pirobox_gall img {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.lte8 section #our_team div.row ul li {
+    margin-right: 15px;
+}
+
+.lte8 header #slider {
+    background-position: center top;
+    position: absolute;
+}
+
+.lte8 footer div.row .column {
+    margin-right: 10px !important;
+}
+
+.lte8 #download li.last {
+    float: right;
+    margin-top: -88px;
+}
+
+.lte8 #download li.last a {
+    -moz-border-radius: 0px 6px 6px 0px;
+    -moz-transition: 500ms linear all;
+    -ms-transition: 500ms linear all;
+    -webkit-border-radius: 0px 6px 6px 0px;
+    -webkit-transition: 500ms linear all;
+    border-radius: 0px 6px 6px 0px;
+    font-size: 12px;
+    height: 80px;
+    padding: 12px;
+    text-align: right;
+    text-shadow: 0px 1px rgba(0,0,0,0.25);
+    transition: 500ms linear all;
+    width: 230px;
+}
+
+.lte8 #download a.download {
+    margin-left: -40px;
+    margin-top: -7px;
+    z-index: 100;
+    position: relative;
+}
