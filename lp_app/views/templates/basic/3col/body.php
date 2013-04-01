@@ -1,37 +1,3 @@
-<div id="myCarousel" class="carousel slide">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <div class="item active">
-        <img id="carusel1" src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-03.jpg" data-role="lp_element" class="lp_img" data-width="1349" data-height="500" alt="">
-        <div class="carousel-caption">
-        <h4>First Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </div>
-    </div>
-    <div class="item">
-        <img id="carusel2" src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg" data-role="lp_element" class="lp_img" data-width="1349" data-height="500" alt="">
-        <div class="carousel-caption">
-        <h4>First Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </div>
-    </div>
-    <div class="item">
-        <img id="carusel3" src="http://twitter.github.com/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg" data-role="lp_element" class="lp_img" data-width="1349" data-height="500" alt="">
-        <div class="carousel-caption">
-        <h4>First Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </div>
-    </div>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
 <div class="lp_container" role="heading">
     <a href="http://sdf"><img src="images/placeholder.jpg" style="border-width:2px; border-style:dashed; border-color:#666" class="lp_img def_logo" data-role="lp_element" id="lp_logo" data-width="120" data-height="60" title="company name" alt="company name" /></a>
     <h1 data-role="text">Campaign title</h1>

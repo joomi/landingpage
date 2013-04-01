@@ -264,7 +264,8 @@ function edit(state){
 			$('.colorpicker').remove();
 			$('.lp_focusin').removeClass('lp_focusin').attr('contenteditable', 'false');
 			$(".lp_canvas").toggleClass( "editing" );
-			$('.navbar-fixed-top').animate({top:'0'});
+			$('header #top').animate({top:'0'});
+			$('header').fadeIn();
 			$( ".lp_main" ).sortable( "enable" );
 			break;	
 		case 'on':
@@ -273,7 +274,8 @@ function edit(state){
 			$('#myModal').attr('data-state', 'on').modal({'backdrop':false});
 			$(".lp_canvas").toggleClass( "editing" );
 			$(".lp_main").sortable( "disable" );
-			$('.navbar-fixed-top').animate({top:'-50px'});
+			$('header #top').animate({top:'-60px'});
+			$('header').fadeOut();
 			break;	
 	}
 }

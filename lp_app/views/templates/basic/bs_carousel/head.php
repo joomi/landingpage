@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <!-- Le styles -->
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap-responsive.css" rel="stylesheet">
     <style>
@@ -263,5 +254,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/ico/favicon.png">
-  </head>
+   <link rel="shortcut icon" href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/ico/favicon.png">
+
+	<!--lp_ignore-->
+    <script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/jquery.js"></script>
+	<script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/bootstrap-transition.js"></script>
+    <script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/bootstrap-carousel.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <!--lp_ignore_end-->
+   

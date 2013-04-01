@@ -13,16 +13,12 @@ if(isset($_GET['t']) && !$id){
 	die('The template is not accessable');	
 }
 if (!$this->ion_auth->logged_in()){ die('Please login');}
+$head = file_get_contents($head);
+$head = str_replace('<?php echo base_url();?>', base_url(), $head);
+$head = preg_replace("/<!--lp_ignore-->(.*?)<!--lp_ignore_end-->/s",'',$head);
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8"> <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9"> <![endif]-->
-<!--[if gt IE 9]>  <html> <![endif]-->
-<!--[if !IE]><!--> 
 <html>             
-<!--<![endif]-->
 <head>
 
 	<meta charset="utf-8">
@@ -45,7 +41,7 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
 	var tmp   = '<?php echo ($state == 0 && isset($_GET['t']))?$_GET['t']:$query[0]->template;?>';
 	var user   = '<?php echo $user->id;?>';
 	</script>
-    <?php include($head);?>
+    <?php echo $head;?>
 </head>
 <body class="canvas">
 	<header>
@@ -103,7 +99,8 @@ if (!$this->ion_auth->logged_in()){ die('Please login');}
                     $clean_body = str_replace('&lt;?php', "", $clean_body);
                     $clean_body = str_replace('&lt;script', "", $clean_body);
                     $clean_body = str_replace('&lt;embed', "", $clean_body);
-                    $clean_body = str_replace('&lt;object', "", $clean_body);			  
+                    $clean_body = str_replace('&lt;object', "", $clean_body);	
+					
                     $body = ($state == 1) ? $clean_body : file_get_contents($body);
                     echo $body;
             ?>

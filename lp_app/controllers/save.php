@@ -8,6 +8,7 @@ class Save extends CI_Controller {
 		$page_id = (isset($_POST['id']) && (int)$_POST['id'] > 0)?$_POST['id']:NULL;
 		$html = $_POST['h'];
 		$title = $_POST['title'];
+		$description = '';
 		$clean_HTML = urldecode(base64_decode($html));
 		$clean_HTML = str_replace('&lt;?php', "", $clean_HTML);
 		$clean_HTML = str_replace('?&gt;', "", $clean_HTML);
@@ -39,8 +40,17 @@ class Save extends CI_Controller {
 		if(!is_dir($dir)) mkdir($dir, 0755);		
 		$file = $dir.'/page_'.$page_id.'.html';
 		$fh = fopen($file, 'w') or die("can't open file");
-		$html = $head;
-		$html .= '<body>'.$body;
+		$html = '
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>'.$title.'</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="'.$description.'">
+';
+		$html .= $head;
+		$html .= '</head><body>'.$body;
 		//pixel - hit counter
 		$html .= '<img src="'.base_url().'index.php/pixel?p='.$page_id.'" width="1" height="1" />';
 		$html .= '</body></html>';
