@@ -173,6 +173,8 @@ $('.lp_form_label_update').focusout(function(e) {
     var val = $(this).val();
 	if(type == 'checkbox')
 	$('label[for='+id+']').html('<input type="checkbox" name="lpForm['+id+']" class="def_checkbox" id="'+id+'"> ' + val);
+	else if(type == 'button')
+	$('#'+id).val(val);
 	else
 	$('label[for='+id+']').text(val);
 });

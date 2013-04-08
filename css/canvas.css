@@ -225,7 +225,7 @@ section {
 }
 
 li.dropdown:hover ul{ display:block;}
-.dropdown-menu{ margin-top:0 !important;}
+.dropdown-menu{ margin-top:0 !important; z-index:999999 !important}
 .dropdown-menu li > span{  cursor:default;}
 .dropdown-menu li > span,
 .dropdown-menu li > a {
@@ -350,6 +350,8 @@ a.lp_remove_block{ display: block; position:absolute; top:-6px; right:-14px; pad
 #lp_overlay{ width:100%; height:100%; position:fixed; background:#333 url(../images/saving.gif) 50% 50% no-repeat; opacity:0.6; top:0; left:0; display:none; z-index:999999}
 div[data-role=sortable]>div{ cursor: move}
 header #top.roadx nav ul{ padding-top:5px;}
+.lp_guide{ position:fixed; top:20%; right:50%; margin-right:-370px; z-index:99999; cursor:pointer;}
+.btn-group a i{ margin-top:5px;}
 
  /*
 	Colorpicker for Bootstrap

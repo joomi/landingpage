@@ -1,5 +1,6 @@
-
+	<!--lp_ignore-->
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap.css" rel="stylesheet">
+	<!--lp_ignore_end-->
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap-responsive.css" rel="stylesheet">
     <style>
 

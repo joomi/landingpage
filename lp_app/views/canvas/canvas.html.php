@@ -45,7 +45,6 @@ $head = preg_replace("/<!--lp_ignore-->(.*?)<!--lp_ignore_end-->/s",'',$head);
 </head>
 <body class="canvas">
 	<header>
-
 		<div id="top" class="noise container roadx">
 			<div class="row">
 				<div id="logo" class="span4"><a href="<?php echo base_url();?>">PageN<span style="color:#D62E2E; font-size:39px">[</span>X<span style="color:#D62E2E; font-size:39px">]</span></a></div>
@@ -115,7 +114,8 @@ $head = preg_replace("/<!--lp_ignore-->(.*?)<!--lp_ignore_end-->/s",'',$head);
         <div class="modal-footer">
             <button class="btn" onClick="edit('off');" aria-hidden="true">Close</button>
         </div>
-    </div> 
+    </div>
+    <img src="<?php echo base_url();?>images/guide.png" class="lp_guide" style="display:none;">
     <div id="lp_overlay"></div>   
 </body>
 </html>

@@ -26,7 +26,7 @@ h3{ color:#EEA34A; font-family:Verdana, Geneva, sans-serif; font-size:20px; marg
 .def_footerNav{ margin:0 auto; text-align:center; padding:0 0;}
 .def_footerNav li{text-align:center; display:inline-block; padding:0 5px; margin:0 0;}
 .def_footerNav li a{ display:block; line-height:20px; color:#EEA34A;}
-.lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:33px; height:33px; display:block; background:url(../images/socialIcons.png); background-repeat:no-repeat;}
+.lp_footerSocialIcon{ float:right; margin:0 0 0 9px; width:33px; height:33px; display:block; background:url(http://127.0.0.1/landingpage/landingpage.git/images/socialIcons.png); background-repeat:no-repeat;}
 
 .def_Twitter{ background-position:0 0;}
 .def_Youtube{ background-position:0 -60px;}

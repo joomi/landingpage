@@ -105,9 +105,9 @@ jQuery(document).ready(function($) {
 			var id 		  = input.attr('id');
 			var type	  = input.attr('type');
 		//	var name	  = input.attr('name');
-			var value	  = (type == 'submit')?input.attr('value'):'';
+			var value	  = (type == 'button')?input.attr('value'):'';
 		//	var classx    = input.attr('class');
-			var remove    = (type != 'submit')?'<a class="lp_remove_field" title="Remove this field" alt="Remove this field" rel="'+id+'"></a>':'';
+			var remove    = (type != 'button')?'<a class="lp_remove_field" title="Remove this field" alt="Remove this field" rel="'+id+'"></a>':'';
 			row = row + '<div class="lp_editor_row" data-row="'+id+'"><input class="lp_form_label_update" type="text" data-id="'+id+'" data-type="'+type+'" value="'+label+value+'" />'+remove+'<label class="lesser">Input type is <i>'+type+'</i></label></div>';
         });
 		var base = $.base64.encode(encodeURI(row));
@@ -220,6 +220,12 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+	//guide image
+	if(!$.cookie('lp_guide')) $('.lp_guide').show();
+	$('.lp_guide').click(function(e) {
+        $('.lp_guide').hide();
+		$.cookie('lp_guide', 1);
+    });
 });
 
 var tch = 0;

@@ -6,6 +6,10 @@ class Save extends CI_Controller {
 	{
 		if (!$this->ion_auth->logged_in()) die('No direct access');
 		$page_id = (isset($_POST['id']) && (int)$_POST['id'] > 0)?$_POST['id']:NULL;
+		$query = $this->db->query('SELECT MAX(id) as id FROM page');
+		$row = $query->row();
+		$next_id = md5($row->id + 1);		
+
 		$html = $_POST['h'];
 		$title = $_POST['title'];
 		$description = '';
@@ -14,7 +18,8 @@ class Save extends CI_Controller {
 		$clean_HTML = str_replace('?&gt;', "", $clean_HTML);
 		$clean_HTML = str_replace('&lt;script', "", $clean_HTML);
 		$clean_HTML = str_replace('&lt;embed', "", $clean_HTML);
-		$clean_HTML = str_replace('&lt;object', "", $clean_HTML);			  
+		$clean_HTML = str_replace('&lt;object', "", $clean_HTML);
+		$clean_HTML = str_replace('&lt;!--ses--&gt;', $next_id, $clean_HTML);					  
 		$html = base64_encode(urlencode($clean_HTML));
 
 		$template = $_POST['t'];
@@ -25,9 +30,15 @@ class Save extends CI_Controller {
 			$this->db->query($sql);
 			echo 'n';
 		} else {
+			//insert a new page
 			$sql = "INSERT INTO page (`title`, `user_id`, `create_date`, `last_update`, `data`, `template`) VALUES ('$title', $user_id, NOW(), NOW(), '$html', '$template') "; 
 			$this->db->query($sql);
 			$page_id = $this->db->insert_id();
+			$md5 = md5($page_id);
+			
+			//insert a new xref page_id => md5
+			$sql = "INSERT INTO pg_md5_ids (`id`, `md5`, `state`) VALUES ($page_id, '$md5', 0) "; 
+			$this->db->query($sql);
 			echo $page_id;
 		}
 		

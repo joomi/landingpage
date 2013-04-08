@@ -76,7 +76,7 @@
 
 				<!-- LOGO -->
 
-				<div id="logo" class="span4"><a href="#">PageN<span style="color:#D62E2E; font-size:39px">[</span>X<span style="color:#D62E2E; font-size:39px">]</span></a></div>
+				<div id="logo" class="span4"><a href="#">PageN<span style="color:#D62E2E; font-size:39px">[</span>X<span style="color:#D62E2E; font-size:39px">]</span><span style="font-size:11px;">BETA</span></a></div>
 
 				<!-- END OF LOGO -->
 
@@ -361,7 +361,7 @@
 
 					<div class="column">
 						<h5>FREE</h5>
-						<h6>$ 14.99</h6>
+						<h6>$ 0</h6>
 						<ul>
 							<li><strong>1 GB</strong> Storage</li>
 							<li><strong>5 GB</strong> Bandwidth</li>
@@ -503,11 +503,10 @@
                         <div class="input">
     
                             <input type="text" id="subscribe_mail" name="subscribe_mail" placeholder="Enter an E-Mail">
-    
-                            <input type="button" value="Join Us">
-    
+        
                         </div>
-    
+                                <input class="btn" type="button" value="Join Us">
+
                     </form>
     
                 </div>
@@ -532,7 +531,7 @@
                             <input type="password" id="password" name="password" value="xxxxxxxx">
         
                         </div>
-                                <input type="button" value="Signin">
+                                <input class="btn" type="button" value="Signin">
 
                     </form>
     
