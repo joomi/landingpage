@@ -186,6 +186,7 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 		tch = 0;
 		console.log(tch);
+		$(this).css({color:''});
 		$('#lp_overlay').show();
 		var data = $.base64.encode(encodeURI($('.lp_canvas').html()));
 		var id = getVar('id');
@@ -277,6 +278,7 @@ function edit(state){
 		case 'on':
 			tch = 1;
 			console.log(tch);
+			$('#lp_save').css({color:'#D62E2E'});
 			$('#myModal').attr('data-state', 'on').modal({'backdrop':false});
 			$(".lp_canvas").toggleClass( "editing" );
 			$(".lp_main").sortable( "disable" );

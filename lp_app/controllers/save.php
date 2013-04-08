@@ -9,6 +9,8 @@ class Save extends CI_Controller {
 		$query = $this->db->query('SELECT MAX(id) as id FROM page');
 		$row = $query->row();
 		$next_id = md5($row->id + 1);		
+		$user = $this->ion_auth->user()->row();
+		$user_id = $user->id;
 
 		$html = $_POST['h'];
 		$title = $_POST['title'];
@@ -19,12 +21,12 @@ class Save extends CI_Controller {
 		$clean_HTML = str_replace('&lt;script', "", $clean_HTML);
 		$clean_HTML = str_replace('&lt;embed', "", $clean_HTML);
 		$clean_HTML = str_replace('&lt;object', "", $clean_HTML);
+		$clean_HTML = str_replace('&lt;!--t--&gt;', base64_encode($user->email), $clean_HTML);					  
+		$clean_HTML = str_replace('&lt;!--sub--&gt;', base64_encode('You have a new message'), $clean_HTML);					  
 		$clean_HTML = str_replace('&lt;!--ses--&gt;', $next_id, $clean_HTML);					  
 		$html = base64_encode(urlencode($clean_HTML));
 
 		$template = $_POST['t'];
-		$user = $this->ion_auth->user()->row();
-		$user_id = $user->id;
 		if($page_id){
 			$sql = "UPDATE page SET `last_update` = NOW(), `data` = '$html' , `title` = '$title' WHERE `user_id` = $user_id AND `id` = $page_id AND `template` = '$template'"; 
 			$this->db->query($sql);

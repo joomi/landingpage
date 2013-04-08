@@ -196,5 +196,19 @@ $('#addField').click(function(e) {
 	var html = '<div class="lp_form_row"><label for="'+id+'" contenteditable="false">'+label+'</label><input type="'+type+'" name="lpForm['+id+']" class="def_inputbox" id="'+id+'"></div>';
 	$('#lp_contact-form').prepend(html);
 });
+var send_to = $('#t').val();
+var subject = $('#sub').val();
+if(send_to != '<!--t-->')
+	$('#form_email').val(send_to);
+if(subject != '<!--sub-->')
+	$('#form_subject').val(subject);
+$('#form_email').focusout(function(e) {
+	$('#t').val($.base64.encode($(this).val()));
+});
+$('#form_subject').focusout(function(e) {
+	$('#sub').val($.base64.encode($(this).val()));
+});
+
+
 
 </script>

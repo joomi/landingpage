@@ -40,6 +40,8 @@
                 <label for="confirm" class="def_confirm"><input type="checkbox" name="lpForm[confirm]" value="1" class="def_checkbox" id="confirm"> confirm your intrest</label>
             </div>
             <div class="lp_form_row">
+                <input type="hidden" id="sub" name="sub" value="<!--sub-->">
+                <input type="hidden" id="t" name="t" value="<!--t-->">
                 <input type="hidden" id="ses" name="ses" value="<!--ses-->">
                 <input type="button" id="lp_submit" class="def_submit submit" value="Contact us">
             </div>

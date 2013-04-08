@@ -11,19 +11,20 @@ html {
 }
 
 body {
-    margin: 0px !important
+    margin: 0px !important;
 }
 
-body.inner header,body.canvas header {
+#top{
     min-height: 60px;
+	opacity:0.8;
 }
-
-header #top.transparent {
-    background-color: transparent
-}
-
+header{ min-height:60px;}
 header #top.noise {
-    background-image: url('../images/menu_noise.png')
+    background-image: url('../images/menu_noise.png');
+}
+
+#top:hover {
+	opacity:1;
 }
 
 header #top.roadx {
@@ -186,10 +187,6 @@ header #top nav > ul > li > a:hover {
 
 /* ===[ End Of Top Menu ]=== */
 /*--------------- HEADER ZONE ---------------*/
-
-header { 
-	background-color: #48586F;
-}
 
 header #top {
 	background-color: #48586F;
