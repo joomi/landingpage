@@ -172,7 +172,7 @@ $('.lp_form_label_update').focusout(function(e) {
     var type = $(this).attr('data-type');
     var val = $(this).val();
 	if(type == 'checkbox')
-	$('label[for='+id+']').html('<input type="checkbox" name="lpForm['+id+']" class="def_checkbox" id="'+id+'"> ' + val);
+	$('label[for='+id+']').html('<input type="checkbox" name="lpForm['+id+']" class="def_checkbox" value="'+val+'" id="'+id+'"> ' + val);
 	else if(type == 'button')
 	$('#'+id).val(val);
 	else
@@ -191,7 +191,7 @@ $('#addField').click(function(e) {
 	var id = label.replace(/\s/g,'_');
 	var type = $('#newtype').val();
 	if(type == 'checkbox')
-	var html = '<div class="lp_form_row"><label for="'+id+'" contenteditable="false" class="def_confirm"><input type="'+type+'" name="lpForm['+id+']" class="def_checkbox" id="'+id+'"> '+label+'</label></div>';
+	var html = '<div class="lp_form_row"><label for="'+id+'" contenteditable="false" class="def_confirm"><input type="'+type+'" name="lpForm['+id+']" class="def_checkbox" value="'+label+'" id="'+id+'"> '+label+'</label></div>';
 	else
 	var html = '<div class="lp_form_row"><label for="'+id+'" contenteditable="false">'+label+'</label><input type="'+type+'" name="lpForm['+id+']" class="def_inputbox" id="'+id+'"></div>';
 	$('#lp_contact-form').prepend(html);
@@ -199,13 +199,19 @@ $('#addField').click(function(e) {
 var send_to = $('#t').val();
 var subject = $('#sub').val();
 if(send_to != '<!--t-->')
-	$('#form_email').val(send_to);
+	$('#form_email').val($.base64.decode(send_to));
 if(subject != '<!--sub-->')
-	$('#form_subject').val(subject);
+	$('#form_subject').val($.base64.decode(subject));
 $('#form_email').focusout(function(e) {
+	if($(this).val() == '')
+	$('#t').val('<!--t-->');
+	else
 	$('#t').val($.base64.encode($(this).val()));
 });
 $('#form_subject').focusout(function(e) {
+	if($(this).val() == '')
+	$('#sub').val('<!--sub-->');
+	else
 	$('#sub').val($.base64.encode($(this).val()));
 });
 

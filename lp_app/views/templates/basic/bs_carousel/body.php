@@ -76,14 +76,17 @@
                     <input type="text" name="lpForm[Email]" class="def_inputbox" id="Email">
                 </div>
                 <div class="lp_form_row">                    
-                    <label for="confirm" class="def_confirm"><input type="checkbox" name="lpForm[confirm]" class="def_checkbox" id="confirm"> confirm your intrest</label>
+                    <label for="confirm_your_intrest" class="checkbox"><input type="checkbox" name="lpForm[confirm]" value="confirm your intrest" id="confirm_your_intrest">confirm your intrest</label>
                 </div>
                 <div class="lp_form_row">
-                    <input type="submit" id="lp_submit" class="btn" value="Contact us">
+                    <input type="button" id="lp_submit" class="submit btn" value="Contact us">
                 </div>
+        	    <input type="hidden" id="sub" name="sub" value="<!--sub-->">
+    	        <input type="hidden" id="t" name="t" value="<!--t-->">
+	            <input type="hidden" id="ses" name="ses" value="<!--ses-->">
             </form>
         </div><!-- /.span4 -->
-        <div class="clear"></div>
+        <br style="clear:both" />
       </div><!-- /.row -->
 
 

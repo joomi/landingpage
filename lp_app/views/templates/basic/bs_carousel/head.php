@@ -2,6 +2,7 @@
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap.css" rel="stylesheet">
 	<!--lp_ignore_end-->
     <link href="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/css/bootstrap-responsive.css" rel="stylesheet">
+    <link id="" rel="stylesheet" href="<?php echo base_url();?>css/lp_form.css">
     <style>
 
     /* GLOBAL STYLES
@@ -261,6 +262,7 @@
     <script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/jquery.js"></script>
 	<script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/bootstrap-transition.js"></script>
     <script src="<?php echo base_url();?>lp_app/views/templates/basic/bs_carousel/js/bootstrap-carousel.js"></script>
+	<script src="<?php echo base_url();?>js/lp_form.js"></script>
     <script>
       !function ($) {
         $(function(){

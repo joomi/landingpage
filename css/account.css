@@ -13982,8 +13982,8 @@ nav.main-nav > ul > li {
 
 /* line 64, ui/sidebar.css.scss */
 nav#primary {
-  background-color: #333;
-  background: url('../images/patterns/low_linen.png');
+  
+  background: #48586F url('../images/patterns/menu_noise.png');
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 3px 0px 5px 0px;
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 3px 0px 5px 0px;
   box-shadow: rgba(0, 0, 0, 0.2) 3px 0px 5px 0px;
@@ -14021,18 +14021,17 @@ nav#primary {
       height: 24px;
       padding-right: 5px;
       vertical-align: top;
-      width: 100%; }
+      width: 24px; }
     /* line 110, ui/sidebar.css.scss */
     nav#primary > ul > li > a .caret {
-      border-top-color: #fff;
+      border-top-color: #fff;background: #48586F url('../images/patterns/menu_noise.png');
       border-bottom-color: #fff;
       margin-top: 16px; }
 
 /* line 120, ui/sidebar.css.scss */
 ul.secondary {
   width: 100%;
-  background: #333;
-  background-image: url('../images/patterns/low_linen.png'); }
+	background: #48586F url('../images/patterns/menu_noise.png');	 }
   /* line 125, ui/sidebar.css.scss */
   ul.secondary li.active > a {
     color: #fff; }
@@ -14083,8 +14082,8 @@ ul.secondary {
   -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
-  background-color: #333;
-  background: url('../images/patterns/low_linen.png');
+  
+  background: #48586F url('../images/patterns/menu_noise.png');
   border-bottom: 1px solid #292929; }
   /* line 173, ui/sidebar.css.scss */
   .top-bar a.brand {
@@ -14093,7 +14092,7 @@ ul.secondary {
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
     padding-left: 20px;
-    font-family: HelveticaNeue, Helvetica, Arial;
+    font-family: Source Sans Pro;
     font-size: 2em;
     font-weight: 700;
     line-height: 40px;
@@ -14134,8 +14133,7 @@ ul.top-bar-list {
   margin-left: -30px;
   width: 120px;
   min-width: 120px;
-  background: rgba(0, 0, 0, 0.2);
-  background-image: url('../images/patterns/low_linen.png');
+  background:#48586F url('../images/menu_noise.png');
   border: 1px solid #1D1E21;
   border-top: 0;
   border-bottom: 0;
@@ -18115,8 +18113,8 @@ Copyright (c) 2012 Dan Eden*/
     width: 100%;
     height: 40px;
     margin-top: 0px;
-    background-color: #333;
-    background: url('../images/patterns/low_linen.png');
+    
+    background: url('../images/patterns/.png');
     border-bottom: 1px solid #333; }
     /* line 17, responsive-max1024.css.scss */
     .collapsible-nav .btn-navbar {
@@ -18129,8 +18127,8 @@ Copyright (c) 2012 Dan Eden*/
 
   /* line 25, responsive-max1024.css.scss */
   .top-bar {
-    background-color: #333;
-    background: url('../images/patterns/low_linen.png');
+    
+    background: url('../images/patterns/.png');
     position: relative; }
     /* line 26, responsive-max1024.css.scss */
     .top-bar ul.top-notifications {
@@ -18192,8 +18190,8 @@ Copyright (c) 2012 Dan Eden*/
     /* line 75, responsive-max1024.css.scss */
     nav#primary > ul {
       width: 100%;
-      background: #333;
-      background-image: url('../images/patterns/low_linen.png'); }
+      
+      background:#48586F url('../images/menu_noise.png'); }
     /* line 81, responsive-max1024.css.scss */
     nav#primary .dropdown {
       position: relative;
@@ -18259,3 +18257,8 @@ Copyright (c) 2012 Dan Eden*/
   /* line 7, responsive.css.scss */
   .collapsible-nav a#sidebar-brand {
     display: none; } }
+
+.iconx-dashboard{background-image:url(../images/account/Dashboard.png)}
+.iconx-pages{background-image:url(../images/account/pages.png)}
+.iconx-mail{background-image:url(../images/account/messages.png)}
+.iconx-globe{background-image:url(../images/account/globe.png)}

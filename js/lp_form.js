@@ -14,12 +14,13 @@ jQuery(document).ready(function($) {
 		}); 
 		inputs = inputs.substring(0, inputs.length - 1);
 		if(errors == 0){
+			$('#lp_submit').attr('disabled', true).after('<img width="15" height="15" style="width:15px !important; height:15px !important;" src="http://127.0.0.1/landingpage/landingpage.git/images/loader.gif">');
 			$.ajax({
 				url:'http://127.0.0.1/landingpage/landingpage.git/index.php/form',
 				type:'POST',
 				data:inputs,
 				success: function(data){
-					if(data == '0'){
+					if(data == '1'){
 						$("form.lp_validate").before('<div class="alert alert-success">Your Message has been sent successfully</div>');
 						$("form.lp_validate").remove();
 					}

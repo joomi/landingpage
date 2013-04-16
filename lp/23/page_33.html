@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PageN[X] - Canvas page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+	<!--lp_ignore-->
+    <link href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/css/bootstrap.css" rel="stylesheet">
+	<!--lp_ignore_end-->
+    <link href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/css/bootstrap-responsive.css" rel="stylesheet">
+    <link id="" rel="stylesheet" href="http://127.0.0.1/landingpage/landingpage.git/css/lp_form.css">
+    <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/ico/apple-touch-icon-57-precomposed.png">
+   <link rel="shortcut icon" href="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/ico/favicon.png">
+
+	<!--lp_ignore-->
+    <script src="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/js/jquery.js"></script>
+	<script src="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/js/bootstrap-transition.js"></script>
+    <script src="http://127.0.0.1/landingpage/landingpage.git/lp_app/views/templates/basic/bs_carousel/js/bootstrap-carousel.js"></script>
+	<script src="http://127.0.0.1/landingpage/landingpage.git/js/lp_form.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <!--lp_ignore_end-->
+   
+</head><body>
+                <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://placehold.it/1500x550" id="slider1" data-role="lp_element" class="lp_img lp_img_element" data-width="1500" data-height="500" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 data-role="text">Example headline.</h1>
+              <p class="lead" data-role="text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" data-role="link" href="#">Sign up today</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://placehold.it/1500x550" id="slider2" data-role="lp_element" class="lp_img lp_img_element" data-width="1500" data-height="500" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 data-role="text">Another example headline.</h1>
+              <p class="lead" data-role="text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" data-role="link" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://placehold.it/1500x550" id="slider3" data-role="lp_element" class="lp_img lp_img_element" data-width="1500" data-height="500" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 data-role="text">One more for good measure.</h1>
+              <p class="lead" data-role="text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" data-role="link" href="#">Browse gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+    </div><!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+    <div role="main" data-role="sortable" class="ui-sortable">
+        <div class="span4 lp_element" data-role="lp_element">
+          <img src="http://placehold.it/140x140" id="img1" data-role="lp_element" class="lp_img lp_img_element" data-width="140" data-height="140" alt="My img placeholder">
+          <h2 data-role="text">Heading</h2>
+          <p data-role="text">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+          <p><a class="btn" href="#" data-role="link">View details »</a></p>
+        </div><!-- /.span4 -->
+        <div class="span3 lp_element" data-role="lp_element" style="position: relative;">
+        	<h2 data-role="text">Form layout</h2>
+            <p data-role="text" class="" contenteditable="false">form description.. form description.. form description.. form description.. form description.. </p>
+            <form name="contact-form" data-role="form" id="lp_contact-form" class="lp_validate def_form ui-sortable" method="post" contenteditable="false">
+                <div class="lp_form_row">
+                    <label for="Full_name">Full name</label>
+                    <input type="text" name="lpForm[Full_name]" class="def_inputbox" id="Full_name">
+                </div>
+                <div class="lp_form_row">
+                    <label for="Phone_number" contenteditable="false">Phone number</label>
+                    <input type="text" name="lpForm[Phone_number]" class="def_inputbox" id="Phone_number">
+                </div>
+                <div class="lp_form_row">
+                    <label for="Email">Email</label>
+                    <input type="text" name="lpForm[Email]" class="def_inputbox" id="Email">
+                </div>
+                <div class="lp_form_row">                    
+                    <label for="confirm_your_intrest" class="checkbox"><input type="checkbox" name="lpForm[confirm]" id="confirm_your_intrest" class="">confirm your intrest</label>
+                </div>
+                <div class="lp_form_row">
+                    <input type="button" id="lp_submit" class="submit btn" value="Contact us">
+                </div>
+        	    <input type="hidden" id="sub" name="sub" value="WW91IGhhdmUgYSBuZXcgbWVzc2FnZQ==" style="">
+    	        <input type="hidden" id="t" name="t" value="c2hheXphbG1hbkBqb29taS5jby5pbA==" style="">
+	            <input type="hidden" id="ses" name="ses" value="182be0c5cdcd5072bb1864cdee4d3d6e" style="">
+            </form>
+        </div><div class="span4 lp_element" data-role="lp_element">
+          <img src="http://placehold.it/140x140" id="img2" data-role="lp_element" class="lp_img lp_img_element" data-width="140" data-height="140" alt="My img placeholder">
+          <h2 data-role="text">Heading</h2>
+          <p data-role="text">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#" data-role="link">View details »</a></p>
+        </div><!-- /.span4 -->
+        <!-- /.span4 -->
+        <br style="clear:both">
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="featurette lp_element" data-role="lp_element">
+        <img class="featurette-image pull-right lp_img lp_img_element" id="l_img1" data-role="lp_element" data-width="512" data-height="512" src="http://placehold.it/512x512">
+        <h2 class="featurette-heading" data-role="text">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
+        <p class="lead" data-role="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette lp_element" data-role="lp_element">
+        <img class="featurette-image pull-left lp_img lp_img_element" id="l_img2" data-role="lp_element" data-width="512" data-height="512" src="http://placehold.it/512x512">
+        <h2 class="featurette-heading" data-role="text">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>
+        <p class="lead" data-role="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette lp_element" data-role="lp_element">
+        <img class="featurette-image pull-right lp_img lp_img_element" id="l_img3" data-role="lp_element" data-width="512" data-height="512" src="http://placehold.it/512x512">
+        <h2 class="featurette-heading" data-role="text">And lastly, this one. <span class="muted">Checkmate.</span></h2>
+        <p class="lead" data-role="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p data-role="text">© 2013 Company, Inc.</p>
+      </footer>
+
+    </div><!-- /.container -->        <img src="http://127.0.0.1/landingpage/landingpage.git/index.php/pixel?p=33" width="1" height="1" /></body></html>

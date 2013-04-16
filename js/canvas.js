@@ -104,10 +104,9 @@ jQuery(document).ready(function($) {
             var input     = $('input', this);
 			var id 		  = input.attr('id');
 			var type	  = input.attr('type');
-		//	var name	  = input.attr('name');
 			var value	  = (type == 'button')?input.attr('value'):'';
-		//	var classx    = input.attr('class');
 			var remove    = (type != 'button')?'<a class="lp_remove_field" title="Remove this field" alt="Remove this field" rel="'+id+'"></a>':'';
+			if(type != 'hidden')
 			row = row + '<div class="lp_editor_row" data-row="'+id+'"><input class="lp_form_label_update" type="text" data-id="'+id+'" data-type="'+type+'" value="'+label+value+'" />'+remove+'<label class="lesser">Input type is <i>'+type+'</i></label></div>';
         });
 		var base = $.base64.encode(encodeURI(row));
