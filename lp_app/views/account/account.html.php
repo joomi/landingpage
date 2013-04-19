@@ -57,7 +57,7 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->em
           </a>
         </li>
         <li class="">
-          <a href="#">
+          <a href="change_password">
             Change password
           </a>
         </li>

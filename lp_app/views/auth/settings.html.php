@@ -52,17 +52,17 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->em
 
       <ul id="profile-opts" class=" secondary">
         <li class="">
-          <a href="Settings">
+          <a href="<?php echo base_url();?>index.php/auth/Settings" class="active">
             Settings
           </a>
         </li>
         <li class="">
-          <a href="#" class="active">
+          <a href="<?php echo base_url();?>index.php/change_password">
             Change password
           </a>
         </li>
         <li class="">
-          <a href="auth/logout">
+          <a href="<?php echo base_url();?>index.php/auth/logout">
             Logout
           </a>
         </li>
@@ -184,37 +184,46 @@ $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $user->em
             Password Reset
           </div>
           <div class="vpadded">
-			<?php if(isset($message) && $message != ''){?>
+			<?php if(isset($message) && $message == 'User saved'){?>
+            <div class="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <?php echo $message;?>
+            </div>
+			<?php } elseif(isset($message) && $message != ''){?>
             <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Warning!</strong> <?php echo $message;?>
             </div>
             <?php } ?>
-			<?php if(isset($error) && $error != ''){?>
-            <div class="alert">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <?php echo $error;?>
-            </div>
-            <?php } ?>
 
-            <form action="<?php echo base_url();?>index.php/auth/change_password" method="post" accept-charset="utf-8">
+            <form action="<?php echo base_url();?>index.php/auth/settings" method="post" accept-charset="utf-8">
                 <div class="input full-width">
-                  <label for="old">Old Password:</label>
-                  <input type="password" name="old" value="" id="old">
+                  <label for="first_name">First name:</label>
+                  <input type="text" name="first_name" value="<?php echo $user->first_name;?>" id="first_name">
                 </div>
                 <div class="input full-width">
-                  <label for="new">New Password (at least 8 characters long):</label>
-                  <input type="password" name="new" value="" id="new" pattern="^.{8}.*$">
+                  <label for="last_name">Last name:</label>
+                  <input type="text" name="last_name" value="<?php echo $user->last_name;?>" id="last_name">
                 </div>
                 <div class="input full-width">
-                  <label for="new_confirm">Confirm New Password:</label>
-                  <input type="password" name="new_confirm" value="" id="new_confirm" pattern="^.{8}.*$">
+                  <label for="first_name">Phone:</label>
+                  <input type="text" name="phone1" value="<?php echo $user->phone;?>" id="phone1">
                 </div>
+                <div class="input full-width">
+                  <label for="password">Password:</label>
+                  <input type="password" name="password" value="" id="password">
+                </div>
+                <div class="input full-width">
+                  <label for="password_confirm">Confirm Password:</label>
+                  <input type="password" name="password_confirm" value="" id="password_confirm">
+                </div>
+
                 <div class="input full-width">
                   <input type="submit" class="btn" name="submit" value="Change">
                 </div>
-                  <input type="hidden" name="user_id" value="<?php echo $user->id;?>" id="user_id">  
-            
+                  <input type="hidden" name="id" value="<?php echo $user->id;?>" id="id">  
+                  <input type="hidden" name="<?php echo key($csrf); ?>" value="<?php echo $csrf[key($csrf)]; ?>" id="id">  
+                  
             </form>              
             </div>
 

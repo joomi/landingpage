@@ -4,6 +4,7 @@ class Change_password extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->library('ion_auth');
 		if(!$this->ion_auth->logged_in()){
 			$this->session->set_flashdata('return', base64_encode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
 			redirect('auth/login', 'refresh');
